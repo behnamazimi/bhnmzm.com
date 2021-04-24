@@ -1,0 +1,210 @@
+.abstract-anim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  height: vh(100);
+  overflow: hidden;
+  z-index: 0;
+  transition: all 1s ease-out;
+
+  .box-3d {
+    position: absolute;
+    right: 5%;
+    bottom: 4rem;
+    transform: rotateX(45deg) scale(.9);
+    z-index: 1;
+    transition: all 0.2s ease-in;
+
+    svg {
+      width: 250px;
+      animation: svg-box-rotate 5s ease infinite;
+      position: relative;
+      z-index: 1;
+
+      #line-path {
+        fill: none;
+        stroke: #000;
+        stroke-dasharray: 90;
+        stroke-dashoffset: 0;
+        transition: all 0.2s ease-in-out;
+        animation: speed-line-anim 3s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      #square-path {
+        stroke: none;
+        fill: rgba($secondary-color, 0.75);
+        transition: all 0.2s ease-in-out;
+        transform-origin: center;
+      }
+
+    }
+
+    .shadow {
+      transform: rotate(45deg);
+      display: block;
+      transform-origin: center;
+      transition: all 0.2s ease-in-out;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.12);
+        border-radius: 20px;
+        width: 140px;
+        height: 140px;
+        background: #f1f1f1;
+        left: 0;
+        top: -125px;
+        animation: svg-box-rotate 5s ease infinite;
+      }
+    }
+
+    &:hover {
+      transform: rotateX(45deg) scale(1.1);
+    }
+
+    @media screen and (max-width: 564px) {
+      right: 15%;
+      bottom: 15rem;
+    }
+
+  }
+
+  .lines {
+    position: absolute;
+    z-index: 0;
+    bottom: -45vh;
+    left: 20vw;
+    display: block;
+    width: 160vw;
+    transform: rotate(-32deg) skew(45deg, 11deg) scale(-1);
+    transition: all 0.2s ease-in;
+    opacity: 0.6;
+
+    svg {
+
+      path {
+        fill: none;
+        stroke: rgba(0, 0, 0, 0.16);
+        stroke-width: 0.1;
+        stroke-dasharray: 90;
+        stroke-dashoffset: 0;
+        animation: speed-line-anim 3s ease-in-out infinite;
+
+        &:nth-child(2) {
+          animation-delay: -1s;
+          animation: speed-line-anim 3s ease-out infinite;
+        }
+
+        &:nth-child(3) {
+          animation: speed-line-anim 3s ease-in infinite;
+          animation-delay: -2s;
+        }
+
+        &:nth-child(4) {
+          animation: speed-line-anim 3s linear infinite;
+          animation-delay: -3s;
+        }
+      }
+    }
+  }
+
+  &.--upside {
+    transform: scale(0.7);
+    left: 18%;
+    top: 10%;
+
+    &.--menu {
+      z-index: 999;
+      pointer-events: none;
+
+      .box-3d {
+
+        @media screen and (max-width: 564px) {
+          transform: scale(0.75);
+          right: 5%;
+          bottom: 2rem;
+        }
+      }
+    }
+
+    .box-3d {
+      transform: none;
+
+      svg {
+        animation-direction: reverse;
+      }
+
+      #line-path {
+        transform: scale(0.7);
+        stroke-width: 4;
+        stroke: #fff;
+        animation-direction: reverse;
+      }
+
+      #square-path {
+        animation-direction: reverse;
+        transform: scale(1.2);
+      }
+
+      .shadow {
+        animation-direction: reverse;
+        transform: rotate(45deg) scale(1.2);
+
+        &:after {
+          animation-direction: reverse;
+        }
+      }
+
+    }
+
+    .lines {
+      //bottom: 6vh;
+      left: 14vw;
+      width: 185vw;
+      transform: rotate(-44deg) skew(-31deg, -6deg) scale(-1);
+    }
+
+    @include bp-medium {
+      transform: scale(1);
+      left: 0;
+      top: 0;
+    }
+  }
+
+}
+
+@keyframes speed-line-anim {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+
+}
+
+@keyframes svg-box-rotate {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  80% {
+    transform: rotate(-380deg);
+  }
+}
+
+@keyframes circles-scale {
+  0% {
+    transform: rotateX(50deg) rotateY(-6deg) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(-6deg) scale(1.2);
+    opacity: 0;
+  }
+}

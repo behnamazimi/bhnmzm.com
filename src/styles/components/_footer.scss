@@ -1,0 +1,47 @@
+.main-footer {
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+
+  & .container {
+    border-top: 1px solid $sub-text-color;
+  }
+
+  .copyright {
+    @include font-size(15px);
+    padding-top: 1rem;
+    margin: 0;
+    color: $sub-text-color;
+  }
+
+  .code-friends {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @include font-size(15px);
+    color: $sub-text-color;
+    padding-top: 1rem;
+
+    @include bp-medium {
+      justify-content: flex-end;
+    }
+
+    .love {
+      line-height: 18px;
+      display: flex;
+
+      span {
+        margin: 0 .3rem;
+        color: #f16d3b;
+        font-size: 18px;
+      }
+    }
+
+    a {
+      display: inline-block;
+      margin-left: 0.5rem;
+      text-decoration: none;
+      line-height: 18px;
+
+    }
+  }
+}

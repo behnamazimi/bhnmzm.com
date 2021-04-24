@@ -1,0 +1,29 @@
+.article_meta__item {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 18px;
+  margin-right: 1.7rem;
+  position: relative;
+  text-decoration: none !important;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__label {
+    display: block;
+    color: $sub-text-color;
+  }
+
+  &__icon {
+    color: $sub-text-color;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+
+  &__value {
+    display: block;
+    color: $text-color-dark;
+  }
+}

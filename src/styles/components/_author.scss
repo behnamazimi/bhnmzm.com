@@ -1,0 +1,36 @@
+.author {
+  position: relative;
+  margin: 3rem 0;
+
+  .author__title {
+    padding-left: 90px;
+
+    .author__name {
+      margin: 0;
+    }
+
+    .author__avatar {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.12);
+      z-index: -1;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .author__content {
+    padding-left: 90px;
+    opacity: .6;
+  }
+
+}

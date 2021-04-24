@@ -1,0 +1,59 @@
+.error-page {
+
+  main {
+    text-align: center;
+    min-height: 81vh;
+  }
+
+  svg.sad-face {
+    width: 15vw;
+    min-width: 160px;
+    margin: 20vh auto 2rem;
+    display: block;
+    opacity: .75;
+    fill: $primary-color;
+
+    #sad-face-eyes {
+      animation: blink 4s infinite linear;
+      transform-origin: 0 16px;
+    }
+  }
+
+  .message {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    color: $text-color-dark;
+
+    p {
+      font-weight: 300;
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 5% {
+    transform: scaleY(1);
+  }
+  5.2%, 20.2% {
+    transform: scaleY(.1);
+  }
+  7%, 20%, 23%, 55% {
+    transform: scaleY(1);
+  }
+  55.1%, 65% {
+    transform: scaleY(1) rotateY(-30deg) translateX(20px);
+  }
+  65.1%, 70% {
+    transform: scaleY(1) rotateY(-30deg) translateX(20px);
+  }
+  70.1%, 85.1% {
+    transform: scaleY(1) rotateY(30deg) translateX(-10px);
+  }
+  85.1%, 90% {
+    transform: scaleY(1) rotateY(30deg) translateX(-10px);
+  }
+  90.1%, 100% {
+    transform: scaleY(1);
+  }
+}

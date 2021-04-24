@@ -1,0 +1,115 @@
+$duration: 1;
+$box-number: 5;
+$box-size: 1.5rem;
+$box-gap: .7rem;
+$primary-color: #039be5;
+
+@keyframes moving {
+  0%, 5% {
+    left: 0;
+    background-color: $primary-color;
+  }
+  95%, 100% {
+    left: calc(100% - #{$box-size});
+    background-color: lighten($primary-color, 30)
+  }
+}
+
+@mixin box-anim($end:70) {
+  0% {
+    transform: scale(1, 1) rotate(0deg);
+    bottom: 0;
+  }
+  5% {
+    bottom: $box-gap * ($box-size / $box-gap);
+  }
+  15% {
+    bottom: 0;
+    transform: scale(1, 1) rotate(-180deg);
+  }
+  17.001% {
+    bottom: 0;
+    transform: translate($box-size * .3, $box-size * .2) scale(1.3, .6) translateY(0px) rotate(-180deg);
+  }
+  25% {
+    bottom: 0;
+    transform: scale(1, 1) rotate(-180deg);
+  }
+
+  #{$end}% {
+    transform: scale(1, 1) rotate(-180deg);
+    bottom: 0;
+  }
+  #{$end + 5}% {
+    bottom: $box-gap * ($box-size / $box-gap);
+  }
+  #{$end + 15}% {
+    bottom: 0;
+    transform: scale(1, 1) rotate(0deg);
+  }
+  #{$end + 17.001}% {
+    bottom: 0;
+    transform: translate(-$box-size * .3, $box-size * .2) scale(1.3, .6) translateY(0px) rotate(0deg);
+  }
+  #{$end + 25}% {
+    transform: scale(1, 1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1, 1) rotate(0deg);
+  }
+}
+
+@keyframes box-2-anim {
+  @include box-anim(66)
+}
+
+@keyframes box-3-anim {
+  @include box-anim(56)
+}
+
+@keyframes box-4-anim {
+  @include box-anim(45)
+}
+
+@keyframes box-5-anim {
+  @include box-anim(33)
+}
+
+.box-loading {
+  width: ($box-number * $box-size) + ($box-gap * ($box-number - 1));
+  height: $box-size;
+  position: relative;
+  margin: 0 auto;
+
+  & > .box {
+    position: absolute;
+    width: $box-size;
+    height: $box-size;
+    border-radius: $box-size / 5;
+    background-color: #007bff;
+    transform-origin: -$box-gap/2 $box-size/2;
+    box-shadow: 0 0 6px 2px rgba(40, 139, 171, 0.15);
+
+    @for $i from 1 through $box-number {
+      &:nth-child(#{$i}) {
+        left: #{($i - 1) * ($box-size + $box-gap)};
+        background-color: lighten($primary-color, $i * 5);
+
+        @if $i != 1 {
+          //width: $box-size + 80;
+          animation: box-#{$i}-anim #{$duration * 2}s infinite linear;
+          animation-delay: #{$i * $duration / 9}s;
+        }
+      }
+    }
+
+    &:nth-child(1) {
+      background-color: cyan;
+      opacity: 1;
+      animation: moving #{$duration}s infinite cubic-bezier(0.6, 0, 0.4, 1) alternate;
+      //animation: moving #{$duration}s infinite cubic-bezier(0.7, 0, 0.3, 1) alternate;
+    }
+
+  }
+
+}

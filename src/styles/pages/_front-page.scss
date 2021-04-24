@@ -1,0 +1,68 @@
+.page.front-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 100%);
+  overflow: hidden;
+
+  & > main {
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 1rem 1rem 3rem 1rem;
+    user-select: none;
+
+    @include bp-medium {
+      padding: 2rem 2rem 6rem 6rem;
+    }
+
+    .me {
+      position: relative;
+      z-index: 10;
+
+      .name {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        font-weight: 500;
+        margin: 0 0 .4rem;
+        color: lighten($text-color, 20);
+      }
+
+      .subject {
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+        font-weight: 300;
+        margin: 0;
+        font-family: $primary-font-family;
+      }
+
+
+      @include bp-medium {
+        .name {
+          font-size: 1.8rem;
+          line-height: 1.8rem;
+        }
+
+        .subject {
+          font-size: 1.6rem;
+          line-height: 1.6rem
+        }
+      }
+
+      @include bp-large {
+        .name {
+          font-size: 2.2rem;
+          line-height: 2.2rem;
+        }
+
+        .subject {
+          font-size: 2.1rem;
+          line-height: 2.1rem
+        }
+      }
+    }
+  }
+
+}

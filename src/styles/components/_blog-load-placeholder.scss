@@ -1,0 +1,64 @@
+.blog-load-placeholder {
+  position: relative;
+  margin-top: 2rem;
+
+  $bg: #efefef;
+
+  &__figure {
+    height: 140px;
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+    background: $bg;
+    border-radius: .7rem;
+    @extend %bganim;
+  }
+
+  &__title {
+    margin: 0;
+    height: 32px;
+    background: $bg;
+    width: 60%;
+    @extend %bganim;
+  }
+
+  &__content {
+    margin: 1rem 0 0;
+    height: 70px;
+    background: $bg;
+    width: 100%;
+    @extend %bganim;
+  }
+
+  &__meta {
+    margin: 1rem 0 0;
+
+    & > * {
+      background: $bg;
+      margin-right: 1rem;
+      display: inline-block;
+      height: 36px;
+      width: 85px;
+      @extend %bganim;
+    }
+  }
+}
+
+%bganim {
+  background: linear-gradient(270deg, #efefef, #d0d0d0);
+  background-size: 400% 400%;
+
+  animation: AnimationName 3s linear infinite;
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 51%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}

@@ -1,0 +1,39 @@
+.manage-layout {
+  min-height: vh(100);
+
+  .ant-upload.ant-upload-drag {
+    height: auto;
+  }
+}
+
+.page-content.login {
+  max-width: 100%;
+  width: 420px;
+  margin: 5rem auto;
+}
+
+/** Header */
+
+.manage-header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 0 1rem;
+
+  .brand {
+    line-height: 42px;
+    font-weight: bold;
+  }
+}
+
+.storage-item {
+  .ant-card-cover {
+    max-height: 110px;
+    overflow: hidden;
+  }
+}

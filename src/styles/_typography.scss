@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Work+Sans:300,400,500,700&display=swap');
+
+// font-family: 'Josefin Sans', sans-serif;
+// font-family: 'Work Sans', sans-serif;
+
+* {
+  font-family: $primary-font-family, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $secondary-font-family, sans-serif;
+}

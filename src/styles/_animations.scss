@@ -1,0 +1,40 @@
+@include keyframes(menu-open) {
+  0% {
+    opacity: .15;
+    width: 20vmin;
+    height: 20vmin;
+    transform: translate(-50%, -50%);
+  }
+  70% {
+    border-radius: 2rem;
+  }
+  100% {
+    border-radius: 0;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    height: vh(100);
+  }
+}
+
+@include keyframes(menu-close) {
+  0% {
+    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+    height: vh(100);
+    transform: translate(-50%, -50%);
+    border-radius: 2rem;
+  }
+  30% {
+    border-radius: 0;
+  }
+
+  100% {
+    opacity: .15;
+    transform: translate(-50%, -50%);
+    width: 20vmin;
+    height: 20vmin;
+  }
+}

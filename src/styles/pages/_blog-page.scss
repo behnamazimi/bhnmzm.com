@@ -1,0 +1,31 @@
+.page.blog-page {
+
+  $masonry-gutter-size: 30px;
+
+  main {
+    min-height: 80vh;
+  }
+
+  .blog-items {
+    margin-top: 3rem;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: -#{$masonry-gutter-size};
+    width: auto;
+  }
+
+  .blog-items__column {
+    padding-left: $masonry-gutter-size;
+    background-clip: padding-box;
+  }
+
+  .blog-item__no-content {
+    margin: 2rem 0;
+    color: $text-color-dark;
+    @include font-size(16px);
+
+  }
+
+}

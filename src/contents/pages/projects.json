@@ -1,0 +1,59 @@
+[
+  {
+    "_id": "5fccdabba0c8bd00943297ac",
+    "title": "In-site Shortkeys Chrome Extension",
+    "key": "in-site-shortkeys-chrome-extension",
+    "date": "Oct 2020 - Present",
+    "link": "https://chrome.google.com/webstore/detail/in-site-shortkeys/dgigbgdgmhhncfgaidcbmafkcmagkool",
+    "github_link": "https://github.com/behnamazimi/in-site-shorteys",
+    "order": "45",
+    "description": "Keyboard shortcuts for actions of websites you use frequently. With In-site Shortkeys, you can define custom keyboard shortcuts for certain actions of websites you use frequently. Also, it's possible to define shortcuts for executing scripts and, you can share script shortkeys with other sites.  "
+  },
+  {
+    "_id": "5f4d579f021af3103cfc7fdc",
+    "title": "Ellipsis HTML Ellements",
+    "key": "ellipsis-html-ellements",
+    "date": "Aug 2020 - Present",
+    "link": "",
+    "description": "Mini tool to align HTML elements along an ellipse or a part of an ellipse. So you can arrange your HTML items along an ellipse easily without using canvas or any complex math functions.",
+    "order": "40",
+    "github_link": "https://github.com/behnamazimi/practical-front-end-projects"
+  },
+  {
+    "_id": "5f515ca720cf492894c36d6d",
+    "title": "JS Service Wrapper",
+    "key": "js-service-wrapper",
+    "date": "Jul 2020 - Present",
+    "github_link": "https://github.com/behnamazimi/js-service-wrapper",
+    "order": "30",
+    "description": "A promise based collective service wrapper with queue support which totally works in browser and/or Node.js environment"
+  },
+  {
+    "_id": "5f515cd220cf492894c36d6e",
+    "title": "Practical Front-End Projects",
+    "key": "practical-front-end-projects",
+    "date": "Feb 2020 - Present",
+    "github_link": "https://github.com/behnamazimi/practical-front-end-projects",
+    "order": "20",
+    "description": "Collection of practical front-end projects with pure Javascript, CSS, and HTML"
+  },
+  {
+    "_id": "5f515cfb20cf492894c36d6f",
+    "title": "Master Voc",
+    "key": "master-voc",
+    "date": "Jan 2019 - Present",
+    "demo_link": "",
+    "order": "10",
+    "description": "Vocabulary learning and practicing platform.",
+    "link": "https://mastervoc.com/"
+  },
+  {
+    "_id": "5fccdbaea0c8bd00943297ad",
+    "title": "Arman Mandegar ",
+    "key": "arman-mandegar",
+    "date": "Aug 2018 - Present",
+    "link": "http://armanmandegar.com/",
+    "order": "05",
+    "description": "The website of Arman Mandegar international recruitment."
+  }
+]

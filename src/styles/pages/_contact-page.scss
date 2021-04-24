@@ -1,0 +1,53 @@
+.page.contact-page {
+
+  .page__content {
+    min-height: 65vh;
+  }
+
+  .page__title {
+    display: inline-block;
+    margin-top: 3rem;
+
+    @include bp-medium {
+      margin-top: 7rem;
+    }
+  }
+
+
+  .contact-infos {
+    margin-top: 5rem;
+
+    &__item {
+      margin-bottom: .7rem;
+      font-size: 16px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      a {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        font-weight: 500;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+
+      .--icon {
+        margin-right: .5rem;
+        color: $primary-color;
+      }
+    }
+  }
+
+  .socials-wrapper {
+    margin-top: 1.5rem;
+
+    p {
+      margin: 0;
+    }
+  }
+}

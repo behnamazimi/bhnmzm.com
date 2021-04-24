@@ -1,0 +1,37 @@
+.blog-search {
+  position: relative;
+
+  &__input {
+    border: 1px solid #e0e0e0;
+    padding: .4rem .75rem;
+    border-radius: 5px;
+    font-size: 18px;
+    outline: none;
+    width: 100%;
+    transition: all .3s;
+
+    @include input-placeholder {
+      font-size: 16px;
+      line-height: 1;
+      opacity: .6;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: $default-shadow;
+    }
+  }
+
+  &__loading,
+  &__reset {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
