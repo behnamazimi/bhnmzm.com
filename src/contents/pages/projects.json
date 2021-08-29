@@ -1,5 +1,15 @@
 [
   {
+    "_id": "5fccdabba0c8bd00943584ds",
+    "title": "Twitter Following Track Bot",
+    "key": "twitter-following-track-bot",
+    "date": "Aug 2021 - Present",
+    "link": "https://www.npmjs.com/package/tw-followingtrackbot",
+    "github_link": "https://github.com/behnamazimi/tw-followingtrackbot",
+    "order": "50",
+    "description": "Use this bot to track if any account started following other accounts. It's easy to use and you only need a Twitter developer account to start monitoring."
+  },  
+  {
     "_id": "5fccdabba0c8bd00943297ac",
     "title": "In-site Shortkeys Chrome Extension",
     "key": "in-site-shortkeys-chrome-extension",
