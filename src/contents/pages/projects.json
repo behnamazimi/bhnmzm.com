@@ -11,13 +11,13 @@
   },  
   {
     "_id": "5fccdabba0c8bd00943297ac",
-    "title": "In-site Shortkeys Chrome Extension",
-    "key": "in-site-shortkeys-chrome-extension",
+    "title": "Keyboard Shortcuts for Websites Chrome Extension",
+    "key": "key-shortcuts-chrome-extension",
     "date": "Oct 2020 - Present",
     "link": "https://chrome.google.com/webstore/detail/in-site-shortkeys/dgigbgdgmhhncfgaidcbmafkcmagkool",
     "github_link": "https://github.com/behnamazimi/in-site-shorteys",
     "order": "45",
-    "description": "Keyboard shortcuts for actions of websites you use frequently. With In-site Shortkeys, you can define custom keyboard shortcuts for certain actions of websites you use frequently. Also, it's possible to define shortcuts for executing scripts and, you can share script shortkeys with other sites.  "
+    "description": "Keyboard shortcuts for actions of websites you use frequently. With Keyboard Shortcuts for Websites, you can define custom keyboard shortcuts for certain actions of websites you use frequently. "
   },
   {
     "_id": "5f4d579f021af3103cfc7fdc",
