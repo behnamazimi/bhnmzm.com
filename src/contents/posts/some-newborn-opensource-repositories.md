@@ -4,7 +4,7 @@ description: 'I share 7 open-source repositories/tools of mine that I have devel
 order: 50
 created_at: '2022-07-16T16:00:36.854Z'
 updated_at: '2022-07-16T18:51:27.061Z'
-image: 'https://raw.githubusercontent.com/behnamazimi/pstrg/master/bhnmzm/sprouting.jpeg'
+image: 'https://raw.githubusercontent.com/behnamazimi/pstrg/master/bhnmzm/sprouting.jpg'
 ---
 
 We all knew that what we have now as popular open-source repositories or well-known tools that we use every day started with an idea and developed for personal usage and then published as a result of high satisfaction of owner/developer.
