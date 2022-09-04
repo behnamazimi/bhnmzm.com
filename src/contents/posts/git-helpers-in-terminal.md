@@ -1,13 +1,13 @@
 ---
 title: '--help, -h, help, man; Matter of knowing git helpers in terminal'
-description: 'Know more about git help commands in terminal and their diffirances' 
+description: 'Know more about git help commands in terminal and their differences' 
 order: 55
 created_at: '2022-09-04T16:00:36.854Z'
 updated_at: ''
 image: 'https://raw.githubusercontent.com/behnamazimi/pstrg/master/bhnmzm/git-helpers.png'
 ---
 
-Sometimes we all need to remember the structure of a git command or it's options. Depending on the situation, we get help from either google or terminal help commands.
+Sometimes we all need to remember the structure of a git command or its options. Depending on the situation, we get help from either google or terminal help commands.
 But we are often exposed to too much content and can get lost in tons of text just to find something simple in both google search results and terminal manpages.
 
 To make this journey simple, it's better to know git help commands and their diffirances;
