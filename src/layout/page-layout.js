@@ -8,7 +8,6 @@ import Header from "../components/header/header"
 import Footer from "../components/footer"
 import {motion} from "framer-motion"
 import StatusContextProvider from "../contexts/status.context"
-import "../styles/styles.scss"
 import BoxLoading from "../components/box-loading";
 import pkg from "../../package.json";
 

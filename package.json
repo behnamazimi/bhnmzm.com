@@ -1,36 +1,34 @@
 {
-  "name": "bhnmzm",
-  "version": "1.0.2",
-  "description": "My personal website",
-  "main": "index.js",
+  "name": "next12",
+  "version": "1.0.1",
+  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.3.0",
-    "@zeit/next-css": "^1.0.1",
-    "@zeit/next-sass": "^1.0.1",
-    "classnames": "^2.3.1",
-    "flexboxgrid": "^6.3.1",
-    "formidable": "^1.2.2",
-    "framer-motion": "^4.1.9",
-    "gray-matter": "^4.0.3",
-    "next": "10.1.3",
-    "node-sass": "^5.0.0",
-    "nprogress": "^0.2.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "react-masonry-css": "^1.0.16",
-    "react-mde": "^11.1.0",
-    "remark": "^13.0.0",
-    "remark-html": "^13.0.1",
-    "webpack": "^4.46.0"
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@auth0/nextjs-auth0": "1.9.1",
+    "classnames": "2.3.1",
+    "flexboxgrid": "6.3.1",
+    "formidable": "2.0.1",
+    "framer-motion": "7.2.1",
+    "gray-matter": "4.0.3",
+    "react-mde": "11.5.0",
+    "remark": "14.0.2",
+    "remark-html": "15.0.1",
+    "prop-types": "15.8.1",
+    "nprogress": "0.2.0",
+    "react-icons": "4.4.0",
+    "react-masonry-css": "1.0.16"
+  },
+  "devDependencies": {
+    "eslint": "8.23.0",
+    "eslint-config-next": "12.2.5",
+    "sass": "^1.54.8"
   }
 }

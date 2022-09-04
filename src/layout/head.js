@@ -3,6 +3,7 @@ import Head from "next/head"
 import SITE_META from "../constants/site-meta.const"
 import FavIcons from "./fav-icons"
 import SEO from "./seo"
+import Script from "next/script";
 
 const CustomHead = () => {
 
@@ -14,11 +15,11 @@ const CustomHead = () => {
                 <meta name='viewport' key='viewport' content='width=device-width,minimum-scale=1'/>
 
                 {/* add --loading class to html by default*/}
-                <script dangerouslySetInnerHTML={{
+                <Script dangerouslySetInnerHTML={{
                     __html: `document.documentElement.classList.add("--loading")`
                 }}/>
 
-                <script dangerouslySetInnerHTML={{
+                <Script dangerouslySetInnerHTML={{
                     __html: `
                      (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -36,7 +37,7 @@ const CustomHead = () => {
                     ga('send', 'pageview');`
                 }}>
 
-                </script>
+                </Script>
             </Head>
 
             <FavIcons/>

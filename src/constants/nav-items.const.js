@@ -2,19 +2,19 @@ const NAV_ITEMS = [
    {
       key: "home",
       title: "Home",
-      subTitle: "My most preferred place",
+      subTitle: "My favorite place; Working remotely ;)",
       path: "/",
    },
    {
       key: "blog",
       title: "Blog",
-      subTitle: "I really love to share",
+      subTitle: "Want to grow? Share what you know",
       path: "/blog",
    },
    {
       key: "about",
       title: "About",
-      subTitle: "If you don't know me",
+      subTitle: "Long story, made it short :)",
       path: "/about",
    },
    {
@@ -26,7 +26,7 @@ const NAV_ITEMS = [
    {
       key: "contact",
       title: "Contact",
-      subTitle: "Always easy to find me",
+      subTitle: "Do not hesitate to reach out",
       path: "/contact-me",
    },
 ]

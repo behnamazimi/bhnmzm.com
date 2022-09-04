@@ -19,7 +19,7 @@ function AbstractAnim({className}) {
 
             clearInterval(absAnimRef.current.TOFLAG)
             absAnimRef.current.TOFLAG = setTimeout(() => {
-                absAnimRef.current.classList.remove("--upside")
+                absAnimRef.current?.classList.remove("--upside")
             }, 5000)
         }
     }

@@ -1,5 +1,5 @@
 ---
 title: Blog
-description: I really love to share
+description: Want to grow? Share what you know
 ---
 
