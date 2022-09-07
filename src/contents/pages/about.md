@@ -11,6 +11,7 @@ In my carrier, I chose to gravitate and focus more on front-end engineering but 
 
 I'm 30 now and I have loved coding since I was 11, I believe this love led me to study software engineering. I graduated in 2015 with a bachelor's degree. 
 
+Dates that are important to me:
 - In August 2018, married Hani ❤️
 - In August 2019, immigrated to Istanbul, Turkey.
 - In April 2022, immigrated to Amsterdam, the Netherlands.
