@@ -1,25 +1,20 @@
 ---
 title: About Me
-description: Read more about me and my experiences
+description: Long story, made it short :)
 ---
 
-## Just Now
-I'm Behnam, an experienced web developer with focused on front-end and took part in many projects as a
-full-stack developer. Self-learning capabilities with a bachelor's degree in Software Engineering. Skilled in many
-coding and designing tools like Git, VSC, Material UI, Jira, Test Cases, Adobe Photoshop, Adobe Illustrator, Adobe XD
-and many others.
+You might already know me or maybe tapping a link led you here, it does not matter. The only important thing for online-me right now is that you are here. I’m Behnam and I’m glad to have you here. 
 
-## Earlier
-I'm 28 years old and married. I have always loved coding since I was 11, and this was the cause to study
-Software Engineering. I graduated in 2015 with a bachelor's degree.
+I have spent a big part of my life behind a screen to probe, investigate and learn new things, and I even gained many of my hobbies from these screens but I don’t like video games. I’m also not good at any sport but I won't leave my friends alone. I like watching movies, I love reading and I hate ignorance of any kind. IMHO, geographical borders are meaningless and what matters is humanity and any kind of patriotism and nationalism will cause failure in the long run. 
 
-After working in few companies I decided to establish my own company with my love Haniyeh, and we named it Karadev. Two
-years passed end everything was fine until things went wrong in the country, so we decided to close the company and to
-migrate.
+In my carrier, I chose to gravitate and focus more on front-end engineering but took part in many projects with different titles and responsibilities. At the moment I call myself a javascript developer who can write simple scripts with GoLang and Python.
 
-In August 2019 we immigrated to Istanbul, Turkey and currently I'm working in a design company as a front-end developer.
+I'm 30 now and I have loved coding since I was 11, I believe this love led me to study software engineering. I graduated in 2015 with a bachelor's degree. 
 
-## What next?
-Nobody can predict what will happen in the future but I try my best to make it the best.
+In August 2018, married Hani ❤️
+In August 2019, immigrated to Istanbul, Turkey.
+In April 2022, immigrated to Amsterdam, the Netherlands.
+
+Do not hesitate to contact me, would gladly respond to you.
 
 *Wish you well :)*
