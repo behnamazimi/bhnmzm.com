@@ -14,24 +14,24 @@ const CustomHead = () => {
         <meta name='viewport' key='viewport' content='width=device-width,minimum-scale=1'/>
 
         {/* add --loading class to html by default*/}
-        <script>
-          {`document.documentElement.classList.add("--loading")`}
-        </script>
+        <script dangerouslySetInnerHTML={{__html: `document.documentElement.classList.add("--loading")`}}/>
 
         <script
           src={`https://www.googletagmanager.com/gtag/js?id=${SITE_META.googleAnalytics.trackingID}`}
           async
         />
 
-        <script>
-          {`
+        <script dangerouslySetInnerHTML={
+          {
+            __html: `
+            console.log("hello from head.js");
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             function tracking(event,data){dataLayer.push({event, ...data});}
-            gtag('js', new Date());
-            gtag('config', '${SITE_META.googleAnalytics.trackingID}');
-          `}
-        </script>
+            gtag("js", new Date());
+            gtag("config", "${SITE_META.googleAnalytics.trackingID}");`
+          }
+        }/>
 
       </Head>
 
