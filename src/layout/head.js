@@ -27,6 +27,7 @@ const CustomHead = () => {
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            function tracking(event,data){dataLayer.push({event, ...data});}
             gtag('js', new Date());
             gtag('config', 'G-RN0632ZKW2');
           `}
