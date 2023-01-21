@@ -1,24 +1,13 @@
 import React from "react"
 import cx from "classnames"
 import useStatusContext from "../../hooks/use-status-context"
-import {useRouter} from "next/router";
 
 function MenuToggleBtn() {
   const status = useStatusContext();
-  const router = useRouter();
-
-  const handleMenuClick = () => {
-    status.toggleMenu();
-    window.tracking("menu_click", {
-      page: router.pathname,
-      status: status.menuVisibility ? "close" : "open",
-    });
-  }
 
   return (
     <button className={cx("main-header__nav-toggle-btn", status.menuVisibility && "--active")}
-            onClick={handleMenuClick}
-            id="menu-toggle">
+            onClick={() => status.toggleMenu()}>
       <svg width="44" height="33" viewBox="0 0 44 33">
         <g id="open-mode">
           <g>
