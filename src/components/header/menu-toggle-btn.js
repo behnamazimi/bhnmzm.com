@@ -17,7 +17,8 @@ function MenuToggleBtn() {
 
   return (
     <button className={cx("main-header__nav-toggle-btn", status.menuVisibility && "--active")}
-            onClick={handleMenuClick}>
+            onClick={handleMenuClick}
+            id="menu-toggle">
       <svg width="44" height="33" viewBox="0 0 44 33">
         <g id="open-mode">
           <g>
