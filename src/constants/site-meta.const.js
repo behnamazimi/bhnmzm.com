@@ -20,9 +20,7 @@ const SITE_META = {
     OGImage: "/images/my-avatar.jpg",
     author: "Behnam Azimi",
   },
-  googleAnalytics: {
-    trackingID: "G-RN0632ZKW2"
-  }
+  GTM: "GTM-5NLW93D"
 }
 
 export default SITE_META

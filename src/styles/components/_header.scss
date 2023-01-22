@@ -31,6 +31,11 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       stroke-miterlimit: 10;
+      pointer-events: none;
+
+      & * {
+        pointer-events: none;
+      }
 
       line,
       circle,

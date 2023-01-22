@@ -5,9 +5,14 @@ import useStatusContext from "../../hooks/use-status-context"
 function MenuToggleBtn() {
   const status = useStatusContext();
 
+  const handleMenuClick = () => {
+    status.toggleMenu();
+    window.dataLayer.push({event: "menu-toggle", menu_status: status.menuVisibility ? "close" : "open"});
+  }
+
   return (
     <button className={cx("main-header__nav-toggle-btn", status.menuVisibility && "--active")}
-            onClick={() => status.toggleMenu()}>
+            onClick={handleMenuClick}>
       <svg width="44" height="33" viewBox="0 0 44 33">
         <g id="open-mode">
           <g>
