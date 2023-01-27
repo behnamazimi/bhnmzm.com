@@ -1,7 +1,7 @@
 ---
 title: 'Mastering Git Interactive Rebase: Tips for Editing Commits'
 description: 'Git interactive rebase is a way to edit commits in the past. It allows you to choose specific commits to edit, squash, reorder, and delete. And here are some useful tips about git interactive rebase.' 
-order: 55
+order: 60
 created_at: '2023-01-27T08:00:36.854Z'
 updated_at: ''
 image: 'https://raw.githubusercontent.com/behnamazimi/pstrg/master/bhnmzm/wizard.jpeg'
