@@ -56,24 +56,5 @@
     "github_link": "https://github.com/behnamazimi/practical-front-end-projects",
     "order": "20",
     "description": "Collection of practical front-end projects with pure Javascript, CSS, and HTML"
-  },
-  {
-    "_id": "5f515cfb20cf492894c36d6f",
-    "title": "Master Voc",
-    "key": "master-voc",
-    "date": "Jan 2019 - 2023",
-    "demo_link": "",
-    "order": "10",
-    "description": "Vocabulary learning and practicing platform.",
-    "link": "https://mastervoc.com/"
-  },
-  {
-    "_id": "5fccdbaea0c8bd00943297ad",
-    "title": "Arman Mandegar ",
-    "key": "arman-mandegar",
-    "date": "Aug 2018 - 2022",
-    "link": "http://armanmandegar.com/",
-    "order": "05",
-    "description": "The website of Arman Mandegar international recruitment."
   }
 ]
