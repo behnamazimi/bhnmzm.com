@@ -1,7 +1,7 @@
 const SITE_META = {
   mainTitle: "Behnam Azimi",
   mainSubtitle: "Full Stack Web Developer",
-  copyright: "Copyright © 2020 - All rights reserved",
+  copyright: "Copyright © 2024 - All rights reserved",
   themeColor: "",
   socials: {
     mail: "bhnmzm@gmail.com",
