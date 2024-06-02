@@ -1,5 +1,15 @@
 [
   {
+    "_id": "43ccdfab0a0c8b743s23d84pk",
+    "title": "SureYouDo.io - The Best Way to Get Challenges Done",
+    "key": "sureyoudo.io",
+    "date": "March 2024 - Present",
+    "link": "https://sureyoudo.io",
+    "github_link": "https://github.com/sureyoudo-io",
+    "order": "60",
+    "description": "A trustless decentralized application (DApp) that allows individuals to lock in their pledges to achieve their goals, with the risk of losing their pledged amount if they fail, acts as a their motivator."
+  },  
+  {
     "_id": "5fccdabba0c8b7e3sd3584ds",
     "title": "Merriam-Webster' Dictionary Browser Extension",
     "key": "merriam-webster-dic-ext",
@@ -8,7 +18,7 @@
     "github_link": "https://github.com/behnamazimi/merriam-webster-dictionary-extension",
     "order": "55",
     "description": "An open-source Merriam-Webster dictionary extension for Chromium-based browsers with more than 20K users."
-  },  
+  },    
   {
     "_id": "5fccdabba0c8bd00943584ds",
     "title": "Twitter Following Track Bot",
