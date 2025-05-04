@@ -99,3 +99,4 @@ typings/
 
 
 .vercel
+.env*.local

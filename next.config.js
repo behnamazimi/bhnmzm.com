@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   env: {
     APP_URL: process.env.APP_URL,
+    SECURE_TOKEN: process.env.SECURE_TOKEN,
   },
 }
 
