@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Behnam Azimi — v10</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;family=Caveat:wght@500..700&amp;family=Instrument+Sans:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+.root{--ink:#1E1D2B;--paper:#FBF8F1;--card:#FFFDF8;--sunk:#F3EEE3;--muted:#57556A;--line:#D9D4C7;--accent:#6C4CE0;--on-tint:#1E1D2B;--code:#1E1D2B;--code-line:#34324A;background:var(--paper);color:var(--ink);transition:background-color .5s,color .5s}
+.root.night{--ink:#ECE9F5;--paper:#14131C;--card:#1C1B27;--sunk:#191823;--muted:#A9A6BF;--line:#3A3850;--accent:#B9A6FF;--code:#0E0D15;--code-line:#2A2840}
+.root a{color:var(--ink)}.root a:hover{color:var(--accent)}
+svg [stroke="#1E1D2B"]{stroke:var(--ink)}
+svg [fill="#1E1D2B"]{fill:var(--ink)}
+svg [fill="#FFFDF8"]{fill:var(--card)}
+.nav a{text-decoration:none;padding:10px 4px;position:relative}
+.nav a::after{content:"";position:absolute;left:4px;right:4px;bottom:4px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav a:hover::after{transform:scaleX(1)}
+.h2{margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:44px;letter-spacing:-0.03em;line-height:1.05}
+.squiggle{display:block;margin-top:6px}
+.card{display:block;break-inside:avoid;margin:0 0 24px;border:2px solid var(--ink);border-radius:14px;background:var(--card);color:var(--ink);text-decoration:none;box-shadow:5px 5px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+a.card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink);color:var(--ink)}
+.card .art{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+a.card:hover .art{transform:rotate(-3deg) scale(1.06)}
+.pill{min-height:40px;padding:0 16px;border:2px solid var(--ink);border-radius:999px;background:var(--card);cursor:pointer;font:600 15px 'Instrument Sans',sans-serif;color:var(--ink);transition:background .2s,color .2s}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pill:hover{box-shadow:3px 3px 0 var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;border:2px solid var(--ink);font:600 16px 'Instrument Sans',sans-serif;cursor:pointer;text-decoration:none;background:#F2C14E;color:#1E1D2B !important;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.mono{font-family:'JetBrains Mono',monospace}
+.note{font-family:'Caveat',cursive;font-weight:600;line-height:1.1}
+.morph{animation:morph 14s ease-in-out infinite}
+@keyframes morph{0%,100%{border-radius:58% 42% 55% 45%/50% 55% 45% 50%}33%{border-radius:45% 55% 40% 60%/58% 42% 58% 42%}66%{border-radius:52% 48% 62% 38%/44% 60% 40% 56%}}
+.obj{position:absolute;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transform:var(--rot);transition:transform .25s cubic-bezier(.2,.8,.2,1),filter .25s;filter:drop-shadow(0 6px 0 rgba(30,29,43,.12))}
+.obj:hover{transform:var(--rot) translateY(-4px)}
+.obj.lifted{cursor:grabbing;transform:var(--rot) scale(1.1);filter:drop-shadow(0 16px 10px rgba(30,29,43,.22));z-index:5}
+.obj:focus-visible{outline:2px dashed var(--accent);outline-offset:6px;border-radius:12px}
+.obj svg{display:block;pointer-events:none}
+.tag{position:absolute;left:50%;top:100%;transform:translateX(-50%);white-space:nowrap;font:600 21px 'Caveat',cursive;color:var(--ink);pointer-events:none;animation:pop .45s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{opacity:0;transform:translateX(-50%) scale(.6)}to{opacity:1;transform:translateX(-50%) scale(1)}}
+.hero-note{position:absolute;font-size:30px;color:#F2C14E;pointer-events:none;animation:floatup 2.4s ease-out both}
+@keyframes floatup{from{opacity:0;transform:translateY(0) rotate(0)}15%{opacity:1}to{opacity:0;transform:translateY(-120px) rotate(-18deg)}}
+.miya-sit .eye-open{display:none}
+.miya-sit.awake .eye-open{display:inline}
+.miya-sit.awake .eye-closed,.miya-sit.awake .zzz{display:none}
+.miya-walk .leg{animation:legs .28s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:top}
+.miya-walk .leg2{animation-direction:alternate-reverse}
+@keyframes legs{from{transform:rotate(16deg)}to{transform:rotate(-16deg)}}
+.pill-link{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 18px;border:2px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink);font:600 15px 'Instrument Sans',sans-serif;text-decoration:none;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.pill-link:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);color:var(--ink)}
+.hero-link{display:inline-flex;align-items:center;min-height:44px;font:15px 'JetBrains Mono',monospace;color:var(--ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.hero-link:hover{color:var(--accent)}
+.shelf{display:flex;flex-wrap:wrap}
+.shelf-cell{flex:1 1 200px;display:flex;justify-content:center;border-bottom:7px solid var(--ink);padding:0 8px}
+.shelf-item{display:flex;flex-direction:column;align-items:center;gap:0;padding:0;border:0;background:transparent;cursor:pointer;color:var(--ink);position:relative;top:0}
+.shelf-art{display:block;transition:transform .35s cubic-bezier(.2,1.3,.4,1)}
+.shelf-item:hover .shelf-art{transform:translateY(-6px) rotate(-2deg)}
+.shelf-item.on .shelf-art{transform:translateY(-16px) rotate(-4deg)}
+.shelf-name{position:absolute;top:calc(100% + 16px);white-space:nowrap;font-size:12px;color:var(--muted)}
+.shelf-item.on .shelf-name{color:var(--accent);font-weight:500}
+.shelf-item:focus-visible{outline:2px dashed var(--accent);outline-offset:6px;border-radius:10px}
+.shelf + .shelf{margin-top:56px!important}
+.versions{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px 12px;position:relative}
+.versions::before{content:"";position:absolute;left:40px;right:40px;top:44px;border-top:2.5px solid var(--ink);z-index:0}
+.ver{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;width:120px;padding:0;border:0;background:transparent;cursor:pointer;color:var(--ink)}
+.ver-art{display:block;transition:transform .3s cubic-bezier(.2,1.3,.4,1)}
+.ver:hover .ver-art{translate:0 -4px}
+.ver.on .ver-art{translate:0 -8px;filter:drop-shadow(4px 4px 0 var(--accent))}
+.ver-verdict{font-size:20px;color:var(--muted);text-align:center}
+.ver.on .ver-verdict{color:var(--accent)}
+.ver:focus-visible{outline:2px dashed var(--accent);outline-offset:6px;border-radius:10px}
+.ls-grid{display:grid;grid-template-columns:110px 52px 60px 84px minmax(0,1fr) 120px;gap:16px;align-items:baseline}
+.ls-line{padding:4px 20px}
+.ls-row{width:100%;padding:8px 20px;border:0;background:transparent;text-align:left;cursor:pointer;font:inherit;color:var(--ink);transition:background .2s}
+.ls-row:hover,.ls-row[aria-expanded="true"]{background:var(--sunk)}
+.ls-row:focus-visible{outline:2px dashed var(--accent);outline-offset:-4px}
+.ls-dir{color:var(--accent);font-weight:500}
+.agent{position:absolute;width:210px;transform:translate(-50%,-50%);border:2px solid var(--ink);border-radius:10px;background:var(--card);box-shadow:5px 5px 0 var(--sh);transition:transform .3s,box-shadow .3s,background-color .5s;z-index:1}
+.agent.active{transform:translate(-50%,-50%) translateY(-6px);box-shadow:9px 9px 0 var(--sh)}
+.slip{position:absolute;width:240px;padding:12px 14px 14px;background:var(--card);border:2px solid var(--ink);border-radius:4px;box-shadow:4px 4px 0 #F2C14E;transition:left .9s cubic-bezier(.5,0,.3,1),top .9s cubic-bezier(.5,0,.3,1),transform .9s,background-color .5s;z-index:4}
+.strike{text-decoration:line-through;text-decoration-color:#D3521F;text-decoration-thickness:2px;color:var(--muted)}
+.pop-in{animation:fade .35s ease both}
+.pen{display:block;transform-origin:30% 80%}
+.pen.writing{animation:scribble .22s ease-in-out infinite alternate}
+@keyframes scribble{from{transform:rotate(-10deg) translateX(-4px)}to{transform:rotate(6deg) translateX(4px)}}
+.box-closed,.stamp{display:none}
+.done .box-closed,.done .stamp{display:inline}
+.done .box-open{display:none}
+.done .stamp{animation:stamp .35s cubic-bezier(.2,1.6,.4,1) both;transform-box:fill-box;transform-origin:center}
+@keyframes stamp{from{opacity:0;scale:1.6}to{opacity:1;scale:1}}
+.cat-across{position:absolute;bottom:-6px;left:0;animation:across 2.8s linear both;pointer-events:none;z-index:3}
+@keyframes across{from{transform:translateX(-150px)}to{transform:translateX(640px)}}
+.page-cat{position:fixed;bottom:4px;left:0;z-index:20;animation:stroll 20s linear infinite;pointer-events:none}
+@keyframes stroll{from{transform:translateX(-160px)}to{transform:translateX(110vw)}}
+.snippet{transform:rotate(-1.5deg)}
+.code{margin:0;padding:18px 22px 20px;font:14.5px/1.75 'JetBrains Mono',monospace;color:#E8E6F2;white-space:pre-wrap}
+.code .k{color:#B9A6FF}.code .s{color:#8FD1A6}.code .c{color:#8E8BA8}.code .f{color:#7FB8F0}
+.tok{font:inherit;color:#F2C14E;background:#2A2840;border:1px dashed #6A6690;border-radius:4px;padding:0 4px;cursor:pointer}
+.tok:hover,.tok:focus-visible{border-color:#F2C14E;outline:none}
+.runbtn{margin-left:auto;display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border:1px solid #4A4766;border-radius:6px;background:#2A2840;color:#E8E6F2;font:12px 'JetBrains Mono',monospace;cursor:pointer}
+.runbtn:hover{border-color:#8FD1A6}
+.garbage{color:#F28C6B;background:rgba(242,140,107,.14)}
+.term-btn{font:13px 'JetBrains Mono',monospace;color:#1E1D2B;background:#F2C14E;border:0;border-radius:6px;min-height:34px;padding:0 12px;cursor:pointer;margin:8px 0 4px}
+.repl{flex:1;min-width:0;min-height:36px;background:transparent;border:0;outline:none;color:#E8E6F2;font:14px 'JetBrains Mono',monospace}
+.repl::placeholder{color:#8E8BA8}
+.sugg{font:12px 'JetBrains Mono',monospace;color:#E8E6F2;background:#2A2840;border:1px solid #4A4766;border-radius:999px;min-height:30px;padding:0 10px;cursor:pointer}
+.sugg:hover{border-color:#B9A6FF}
+.flow{stroke-dasharray:7 9;animation:flow .6s linear infinite}
+.rev{animation-direction:reverse}
+@keyframes flow{to{stroke-dashoffset:-16}}
+.pulse{animation:pulse .8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.5}}
+.logline{animation:fade .3s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.commit{display:flex;align-items:center;width:100%;min-height:56px;padding:0 20px 0 12px;border:0;background:transparent;text-align:left;cursor:pointer;font:inherit;color:inherit;transition:background .2s}
+.commit:hover,.commit[aria-expanded="true"]{background:var(--sunk)}
+.commit:focus-visible{outline:2px dashed var(--accent);outline-offset:-4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div class="{{rootCls}}" style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 18px; line-height: 1.6; overflow: hidden">
+<sc-if value="{{cfg.cat}}" hint-placeholder-val="{{ false }}"><div class="page-cat" aria-hidden="true"><svg class="miya-walk" width="150" height="100" viewBox="0 0 150 100"><g fill="#F9C6AE" transform="translate(5 4)"><path d="M30 50c0-12 14-16 30-16h36c12 0 18 8 18 18s-8 14-18 14H46c-10 0-16-6-16-16z"></path><ellipse cx="120" cy="38" rx="18" ry="16"></ellipse><path d="M108 28l-3-17 13 10zM126 24l8-14 2 16z"></path></g><g fill="none" stroke="#1E1D2B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 50c0-12 14-16 30-16h36c12 0 18 8 18 18s-8 14-18 14H46c-10 0-16-6-16-16z"></path><path d="M32 46c-14-6-18-22-10-34"></path><path class="leg" d="M44 64v22"></path><path class="leg leg2" d="M56 64v22"></path><path class="leg leg2" d="M92 64v22"></path><path class="leg" d="M104 64v22"></path><path d="M62 34l4 8M74 34l2 8M86 34v8" stroke-width="2"></path></g><ellipse cx="120" cy="38" rx="18" ry="16" fill="#F9C6AE" stroke="#1E1D2B" stroke-width="2.5"></ellipse><path d="M108 28l-3-17 13 10M126 24l8-14 2 16" fill="none" stroke="#1E1D2B" stroke-width="2.5" stroke-linejoin="round"></path><path d="M122 35q4-5 8 0q-4 4-8 0z" fill="#9BC46A" stroke="#1E1D2B" stroke-width="1.8"></path><path d="M134 42h4l-2 3z" fill="#1E1D2B"></path><path d="M136 46l12-2M136 49l12 2" stroke="#1E1D2B" stroke-width="1.6" stroke-linecap="round"></path></svg></div></sc-if>
+
+<header style="max-width: 1180px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: center; justify-content: space-between">
+<a href="#home" style="display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 19px 'Bricolage Grotesque', sans-serif"><span aria-hidden="true" style="width: 14px; height: 14px; background: #E8622C; border-radius: 4px; box-shadow: 2px 2px 0 var(--ink)"></span>bhnmzm</a>
+<nav class="nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 0 26px; font-size: 16px">
+<a href="#about">About</a>
+<a href="#work">Work</a>
+<a href="#proxy">Proxy-dev</a>
+<a href="#life">Life</a>
+<a href="#writing">Writing</a>
+</nav>
+</header>
+
+<section id="home" style="max-width: 1180px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px; position: relative; z-index: 1">
+<span style="font-size: 20px; color: var(--muted)">Hi, I'm</span>
+<h1 style="margin: -8px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(52px, 7vw, 92px); line-height: .95; letter-spacing: -0.035em; color: var(--accent)">Behnam Azimi</h1>
+<p style="margin: 0; font-size: 24px; line-height: 1.35; font-weight: 600">A software engineer from Amsterdam.</p>
+<p style="margin: 0; max-width: 470px; color: var(--muted)">I build things for the browser and the tools around it. Life comes in three Cs: Miya the cat, code, and the clarinet.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 10px">
+<a href="https://github.com/behnamazimi" class="hero-link">github</a><span aria-hidden="true" style="color: var(--muted)">/</span>
+<a href="https://x.com/bhnmzm" class="hero-link">x</a><span aria-hidden="true" style="color: var(--muted)">/</span>
+<a href="https://www.linkedin.com/in/bhnmzm/" class="hero-link">linkedin</a>
+</div>
+</div>
+
+<div role="group" aria-label="My desk: Miya the cat, a keyboard key and a clarinet. Drag them around, or click one." style="position: relative; height: 540px">
+<div style="position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px">
+<div class="morph" aria-hidden="true" style="position: absolute; inset: -22px; background: #F9C6AE; transform: translate(10px, 8px)"></div>
+<div class="morph" style="position: absolute; inset: 0; border: 2.5px solid var(--ink); overflow: hidden; background: #E9E4FB">
+<img src="/_blob/0ac3ef6611bfb41b431ed335538431f0" alt="Behnam Azimi smiling" style="display: block; width: 100%; height: 100%; object-fit: cover">
+</div>
+</div>
+
+<button class="obj {{o.clar.cls}}" style="left: {{o.clar.x}}px; top: {{o.clar.y}}px; --rot: rotate(-24deg)" aria-label="Clarinet: play a short phrase" onPointerDown="{{o.clar.down}}" onPointerMove="{{o.clar.move}}" onPointerUp="{{o.clar.up}}" onClick="{{o.clar.key}}">
+<svg width="204" height="64" viewBox="0 0 204 64"><g fill="#C9BDF7" transform="translate(4 5)"><path d="M4 28l16-4v14l-16-4z"></path><rect x="20" y="22" width="18" height="18" rx="3"></rect><rect x="38" y="24" width="128" height="14" rx="2"></rect><path d="M166 24c9 0 15-10 32-16v46c-17-6-23-16-32-16z"></path></g><g fill="#2B2A38" stroke="#1E1D2B" stroke-width="2.2" stroke-linejoin="round"><path d="M4 28l16-4v14l-16-4z"></path><rect x="20" y="22" width="18" height="18" rx="3"></rect><rect x="38" y="24" width="64" height="14" rx="2"></rect><rect x="106" y="24" width="60" height="14" rx="2"></rect><path d="M166 24c9 0 15-10 32-16v46c-17-6-23-16-32-16z"></path></g><path d="M5 35l17 4" fill="none" stroke="#F2C14E" stroke-width="2.5" stroke-linecap="round"></path><g fill="#D9D4C7" stroke="#1E1D2B" stroke-width="1.5"><rect x="13" y="23" width="6" height="16" rx="1.5"></rect><rect x="101" y="22" width="6" height="18" rx="1.5"></rect><rect x="163" y="22" width="5" height="18" rx="1.5"></rect></g><path d="M46 27.5h52M112 27.5h50" fill="none" stroke="#D9D4C7" stroke-width="1.6" stroke-linecap="round"></path><g fill="#D9D4C7" stroke="#1E1D2B" stroke-width="1.3"><circle cx="52" cy="32" r="3.4"></circle><circle cx="64" cy="32" r="3.4"></circle><circle cx="76" cy="32" r="3.4"></circle><circle cx="90" cy="31" r="2.4"></circle><circle cx="118" cy="32" r="3.4"></circle><circle cx="130" cy="32" r="3.4"></circle><circle cx="142" cy="32" r="3.4"></circle><circle cx="155" cy="31" r="2.4"></circle></g><path d="M82 36l8 5M146 36l8 5" fill="none" stroke="#D9D4C7" stroke-width="1.6" stroke-linecap="round"></path></svg>
+<sc-if value="{{o.clar.open}}" hint-placeholder-val="{{ false }}">
+<span class="hero-note" aria-hidden="true" style="left: 176px; top: -14px">♪</span>
+<span class="hero-note" aria-hidden="true" style="left: 196px; top: -6px; animation-delay: .4s">♫</span>
+<span class="hero-note" aria-hidden="true" style="left: 166px; top: -2px; animation-delay: .8s">♪</span>
+<span class="tag">♪ a synth stand-in, for now</span>
+</sc-if>
+</button>
+
+<button class="obj {{o.key.cls}}" style="left: {{o.key.x}}px; top: {{o.key.y}}px; --rot: rotate(8deg)" aria-label="Command key" onPointerDown="{{o.key.down}}" onPointerMove="{{o.key.move}}" onPointerUp="{{o.key.up}}" onClick="{{o.key.key}}">
+<svg width="92" height="92" viewBox="0 0 120 120"><rect x="20" y="22" width="80" height="80" rx="16" fill="#F9C6AE" transform="translate(5 4)"></rect><g fill="none" stroke="#1E1D2B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="22" width="80" height="80" rx="16"></rect><rect x="30" y="{{o.key.capY}}" width="60" height="54" rx="11"></rect></g><text x="60" y="{{o.key.textY}}" text-anchor="middle" style="font: 600 30px 'Instrument Sans', sans-serif; fill: var(--ink)">⌘</text></svg>
+<sc-if value="{{o.key.open}}" hint-placeholder-val="{{ false }}"><span class="tag">I made shortcuts for any website</span></sc-if>
+</button>
+
+<button class="obj {{o.miya.cls}}" style="left: {{o.miya.x}}px; top: {{o.miya.y}}px; --rot: rotate(-2deg)" aria-label="Miya the cat" aria-pressed="{{o.miya.open}}" onPointerDown="{{o.miya.down}}" onPointerMove="{{o.miya.move}}" onPointerUp="{{o.miya.up}}" onClick="{{o.miya.key}}">
+<svg class="{{miyaHeroCls}}" width="124" height="134" viewBox="0 0 124 134"><g fill="#F9C6AE" transform="translate(5 4)"><path d="M40 128c-18 0-22-20-16-38 5-15 14-24 20-30h36c7 8 20 20 20 42 0 16-8 26-20 26z"></path><ellipse cx="62" cy="46" rx="28" ry="23"></ellipse><path d="M38 36 35 10l20 15zM86 36l3-26-20 15z"></path></g><g fill="none" stroke="#1E1D2B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M44 66c-9 8-16 16-20 24-6 18-2 38 16 38h40c12 0 20-10 20-26 0-20-11-31-19-38"></path><path d="M96 118c16 2 24-12 18-26-3-7-9-10-14-9"></path><path d="M52 96v30M70 96v30"></path><ellipse cx="62" cy="46" rx="28" ry="23"></ellipse><path d="M38 36 35 10l20 15M86 36l3-26-20 15"></path><path d="M55 27l2 6M62 25v7M69 27l-2 6" stroke-width="2"></path><path d="M38 54l-16-2M38 59l-16 3M86 54l16-2M86 59l16 3" stroke-width="1.8"></path></g><path d="M41 18l3 10 6-5zM83 18l-3 10-6-5z" fill="#ED93B1"></path><path d="M59 52h6l-3 4z" fill="#1E1D2B"></path><path d="M62 56q-3 4-7 2M62 56q3 4 7 2" fill="none" stroke="#1E1D2B" stroke-width="1.8" stroke-linecap="round"></path><g class="eye-closed"><path d="M46 45q5 4 10 0M68 45q5 4 10 0" fill="none" stroke="#1E1D2B" stroke-width="2.4" stroke-linecap="round"></path></g><g class="eye-open"><path d="M46 45q5-6 10 0q-5 5-10 0zM68 45q5-6 10 0q-5 5-10 0z" fill="#9BC46A" stroke="#1E1D2B" stroke-width="2"></path><path d="M51 41.5v7M73 41.5v7" stroke="#1E1D2B" stroke-width="2.4" stroke-linecap="round"></path></g><text class="zzz" x="92" y="22" style="font: 700 20px 'Caveat', cursive; fill: var(--accent)">z z</text></svg>
+<sc-if value="{{o.miya.open}}" hint-placeholder-val="{{ false }}"><span class="tag">mrrp? (that's Miya)</span></sc-if>
+</button>
+
+<span class="note" aria-hidden="true" style="position: absolute; right: 0; bottom: -10px; font-size: 24px; color: var(--muted); transform: rotate(-4deg)">Miya hates being dragged. She'll live.</span>
+</div>
+</section>
+
+<section id="about" style="max-width: 1180px; margin: 0 auto; padding: 24px 32px 112px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 56px 72px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<h2 class="h2">A bit about me<svg class="squiggle" width="200" height="14" viewBox="0 0 200 14" aria-hidden="true"><path d="M3 9c34-6 66-6 98-2s66 2 96-4" fill="none" style="stroke: var(--accent)" stroke-width="4" stroke-linecap="round"></path></svg></h2>
+<p style="margin: 0; color: var(--muted)">Hey there, I'm Behnam. I've spent a good part of my life behind a screen, probing, investigating, and learning new things. These days I write mostly JavaScript and TypeScript, with simple scripts in Go and Python.</p>
+<p style="margin: 0; color: var(--muted)">I love reading, I play the clarinet, and Miya keeps me company. I think geographical borders are meaningless. What matters is humanity.</p>
+</div>
+
+<div class="snippet" style="position: relative; background: var(--code); border: 2px solid var(--ink); border-radius: 14px; box-shadow: 7px 7px 0 #C9BDF7; transition: background-color .5s">
+<div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px 10px 18px; border-bottom: 1px solid var(--code-line)">
+<span class="mono" style="font-size: 13px; color: #E8E6F2">about.ts</span>
+<span class="mono" style="font-size: 12px; color: #F2C14E">{{dirtyMark}}</span>
+<button onClick="{{run}}" class="runbtn"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1v8l7-4z" fill="#8FD1A6"></path></svg>run</button>
+</div>
+<pre class="code"><span class="k">export const</span> behnam = {
+  role: <span class="s">'software engineer'</span>,
+  city: <span class="s">'Amsterdam'</span>,
+  lifeIn: [<span class="s">'cat'</span>, <span class="s">'code'</span>, <span class="s">'clarinet'</span>],
+  cat: <span class="s">'Miya'</span>,
+<sc-if value="{{garbage}}" hint-placeholder-val="{{ false }}"><span class="garbage">  fffjjjjjjj;;;;;;;;
+</span></sc-if>}
+
+<span class="c">// click a value, then run</span>
+<span class="k">export const</span> site = {
+  theme: <button class="tok" onClick="{{cycleTheme}}" aria-label="Change theme">'{{draft.theme}}'</button>,
+  cat: <button class="tok" onClick="{{toggleCatCfg}}" aria-label="Let Miya walk the page">{{draft.catStr}}</button>,
+}</pre>
+<sc-if value="{{catWalking}}" hint-placeholder-val="{{ false }}"><div class="cat-across" aria-hidden="true" style="bottom: auto; top: 150px"><svg class="miya-walk" width="150" height="100" viewBox="0 0 150 100"><g fill="#F9C6AE" transform="translate(5 4)"><path d="M30 50c0-12 14-16 30-16h36c12 0 18 8 18 18s-8 14-18 14H46c-10 0-16-6-16-16z"></path><ellipse cx="120" cy="38" rx="18" ry="16"></ellipse><path d="M108 28l-3-17 13 10zM126 24l8-14 2 16z"></path></g><g fill="none" stroke="#1E1D2B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 50c0-12 14-16 30-16h36c12 0 18 8 18 18s-8 14-18 14H46c-10 0-16-6-16-16z"></path><path d="M32 46c-14-6-18-22-10-34"></path><path class="leg" d="M44 64v22"></path><path class="leg leg2" d="M56 64v22"></path><path class="leg leg2" d="M92 64v22"></path><path class="leg" d="M104 64v22"></path><path d="M62 34l4 8M74 34l2 8M86 34v8" stroke-width="2"></path></g><ellipse cx="120" cy="38" rx="18" ry="16" fill="#F9C6AE" stroke="#1E1D2B" stroke-width="2.5"></ellipse><path d="M108 28l-3-17 13 10M126 24l8-14 2 16" fill="none" stroke="#1E1D2B" stroke-width="2.5" stroke-linejoin="round"></path><path d="M122 35q4-5 8 0q-4 4-8 0z" fill="#9BC46A" stroke="#1E1D2B" stroke-width="1.8"></path><path d="M134 42h4l-2 3z" fill="#1E1D2B"></path><path d="M136 46l12-2M136 49l12 2" stroke="#1E1D2B" stroke-width="1.6" stroke-linecap="round"></path></svg></div></sc-if>
+<div style="border-top: 1px solid var(--code-line)">
+<div aria-live="polite" style="height: 150px; overflow-y: auto; display: flex; flex-direction: column-reverse; padding: 12px 22px 4px">
+<div class="mono" style="font-size: 13.5px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere">
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="1"><div style="{{l.style}}">{{l.t}}</div></sc-for>
+<sc-if value="{{garbage}}" hint-placeholder-val="{{ false }}"><button class="term-btn" onClick="{{checkout}}">$ git checkout -- about.ts</button></sc-if>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 22px 0">
+<sc-for list="{{sugg}}" as="g" hint-placeholder-count="3"><button class="sugg" onClick="{{g.pick}}">{{g.cmd}}</button></sc-for>
+</div>
+<label style="display: flex; align-items: center; gap: 10px; padding: 8px 22px 14px; font: 14px 'JetBrains Mono', monospace; color: #B9A6FF">›
+<input class="repl" value="{{input}}" onChange="{{onInput}}" onKeyDown="{{onKey}}" aria-label="Type a command, or help" placeholder="help" autocomplete="off" spellcheck="false">
+</label>
+</div>
+</div>
+</section>
+
+<section id="work" style="background: var(--sunk); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transition: background-color .5s">
+<div style="max-width: 1180px; margin: 0 auto; padding: 88px 32px 80px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 40px; margin-bottom: 36px">
+<h2 class="h2">Things I've made<svg class="squiggle" width="200" height="14" viewBox="0 0 200 14" aria-hidden="true"><path d="M3 9c34-6 66-6 98-2s66 2 96-4" fill="none" style="stroke: var(--accent)" stroke-width="4" stroke-linecap="round"></path></svg></h2>
+<p style="margin: 0; max-width: 420px; color: var(--muted)">Built for myself first, published later. Open one to read its README.</p>
+</div>
+<div style="border: 2px solid var(--ink); border-radius: 14px; background: var(--card); box-shadow: 5px 5px 0 var(--ink); overflow: hidden; transition: background-color .5s">
+<div style="padding: 14px 20px; border-bottom: 2px solid var(--ink); background: var(--sunk); transition: background-color .5s">
+<code class="mono" style="font-size: 15px; color: var(--ink)"><span style="color: #E8622C">$</span> ls -lat ~/projects</code>
+</div>
+<div style="overflow-x: auto">
+<div class="mono" style="min-width: 720px; padding: 10px 0 14px; font-size: 14px">
+<div class="ls-line" style="color: var(--muted)">total 8</div>
+<div class="ls-grid ls-line" aria-hidden="true" style="color: var(--muted)"><span>drwxr-xr-x</span><span></span><span></span><span>2026-11</span><span>.</span><span></span></div>
+<div class="ls-grid ls-line" aria-hidden="true" style="color: var(--muted)"><span>drwxr-xr-x</span><span></span><span></span><span>2021-04</span><span>..</span><span></span></div>
+<sc-for list="{{ls}}" as="r" hint-placeholder-count="8">
+<div>
+<button class="ls-grid ls-row" onClick="{{r.toggle}}" aria-expanded="{{r.expStr}}">
+<span style="color: var(--muted)">{{r.perm}}</span>
+<span>{{r.type}}</span>
+<span>{{r.users}}</span>
+<span style="color: var(--muted)">{{r.since}}</span>
+<span class="ls-dir">{{r.name}}/</span>
+<span style="color: var(--muted)">{{r.note}}</span>
+</button>
+<sc-if value="{{r.exp}}" hint-placeholder-val="{{ false }}">
+<div class="logline" style="margin: 2px 20px 12px 20px; padding: 16px 20px; background: var(--sunk); border-left: 3px solid var(--accent); border-radius: 0; font-family: 'Instrument Sans', sans-serif">
+<div class="mono" style="font-size: 12px; color: var(--muted)">{{r.name}}/README.md</div>
+<div style="font: 800 26px/1.15 'Bricolage Grotesque', sans-serif; margin: 6px 0 8px"># {{r.title}}</div>
+<p style="margin: 0 0 10px; font-size: 16px; color: var(--muted); max-width: 640px">{{r.desc}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 20px">
+<sc-if value="{{r.hasSite}}" hint-placeholder-val="{{ true }}"><a href="{{r.site}}" class="hero-link">{{r.siteLabel}} ↗</a></sc-if>
+<sc-if value="{{r.hasCode}}" hint-placeholder-val="{{ true }}"><a href="{{r.code}}" class="hero-link">source ↗</a></sc-if>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="proxy" style="max-width: 1180px; margin: 0 auto; padding: 104px 32px 104px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 28px 72px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<span class="mono" style="font-size: 13px; color: var(--muted)">proxy-dev (n.)</span>
+<blockquote style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -0.03em">“Either use AI or get replaced by it. <span style="color: var(--accent)">Don't overthink it.</span>”</blockquote>
+</div>
+<p style="margin: 0; color: var(--muted)">That's me these days: a proxy-dev. I sit between AI agents and pass their notes along. I read every one, fix the ones that need fixing, and still take the blame.</p>
+</div>
+
+<div style="position: relative; width: 100%; max-width: 1040px; aspect-ratio: 16 / 8.5; margin: 56px auto 0">
+<svg viewBox="0 0 1000 530" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<path d="M160 106L500 276M840 106L500 276M840 434L500 276" fill="none" style="stroke: var(--line)" stroke-width="2.5" stroke-dasharray="6 8" vector-effect="non-scaling-stroke"></path>
+</svg>
+<div class="agent {{ag.planner.cls}}" style="left: {{ag.planner.x}}%; top: {{ag.planner.y}}%; --sh: #C9BDF7">
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 2px solid var(--ink)"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #C9BDF7; border: 1.5px solid var(--ink)"></span><span class="mono" style="font-size: 13px; font-weight: 500">planner</span><span class="mono" style="margin-left: auto; font-size: 11px; color: var(--muted)">agent</span></div>
+<div style="padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px"><span aria-hidden="true" style="height: 6px; width: 80%; border-radius: 3px; background: var(--line)"></span><span aria-hidden="true" style="height: 6px; width: 55%; border-radius: 3px; background: var(--line)"></span><span class="mono" style="font-size: 12px; color: var(--muted); margin-top: 2px">{{ag.planner.status}}</span></div>
+</div>
+<div class="agent {{ag.coder.cls}}" style="left: {{ag.coder.x}}%; top: {{ag.coder.y}}%; --sh: #A9D3F5">
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 2px solid var(--ink)"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #A9D3F5; border: 1.5px solid var(--ink)"></span><span class="mono" style="font-size: 13px; font-weight: 500">coder</span><span class="mono" style="margin-left: auto; font-size: 11px; color: var(--muted)">agent</span></div>
+<div style="padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px"><span aria-hidden="true" style="height: 6px; width: 80%; border-radius: 3px; background: var(--line)"></span><span aria-hidden="true" style="height: 6px; width: 55%; border-radius: 3px; background: var(--line)"></span><span class="mono" style="font-size: 12px; color: var(--muted); margin-top: 2px">{{ag.coder.status}}</span></div>
+</div>
+<div class="agent {{ag.reviewer.cls}}" style="left: {{ag.reviewer.x}}%; top: {{ag.reviewer.y}}%; --sh: #F9C6AE">
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 2px solid var(--ink)"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #F9C6AE; border: 1.5px solid var(--ink)"></span><span class="mono" style="font-size: 13px; font-weight: 500">reviewer</span><span class="mono" style="margin-left: auto; font-size: 11px; color: var(--muted)">agent</span></div>
+<div style="padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px"><span aria-hidden="true" style="height: 6px; width: 80%; border-radius: 3px; background: var(--line)"></span><span aria-hidden="true" style="height: 6px; width: 55%; border-radius: 3px; background: var(--line)"></span><span class="mono" style="font-size: 12px; color: var(--muted); margin-top: 2px">{{ag.reviewer.status}}</span></div>
+</div>
+
+<div style="position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 8px">
+<div style="position: relative; width: 118px; height: 118px">
+<span aria-hidden="true" style="position: absolute; inset: 0; border-radius: 50%; background: #C9BDF7; transform: translate(6px, 5px)"></span>
+<img src="/_blob/0ac3ef6611bfb41b431ed335538431f0" alt="Behnam" style="position: relative; display: block; width: 118px; height: 118px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--ink); box-sizing: border-box">
+<span style="position: absolute; right: -54px; bottom: -14px"><svg class="pen {{penCls}}" width="70" height="70" viewBox="0 0 70 70" aria-hidden="true"><g transform="rotate(40 35 35)"><rect x="29" y="6" width="12" height="44" rx="3" fill="#E8622C" transform="translate(3 3)"></rect><rect x="29" y="6" width="12" height="44" rx="3" fill="none" stroke="#1E1D2B" stroke-width="2.2"></rect><path d="M29 50l6 12 6-12z" fill="#FFFDF8" stroke="#1E1D2B" stroke-width="2.2" stroke-linejoin="round"></path><path d="M33.5 58l1.5 4 1.5-4z" fill="#D3521F"></path><path d="M29 14h12" stroke="#1E1D2B" stroke-width="2"></path></g></svg></span>
+</div>
+<span style="font: 700 17px 'Bricolage Grotesque', sans-serif">behnam</span>
+</div>
+
+<span class="note" aria-hidden="true" style="position: absolute; left: 4%; bottom: 6%; max-width: 260px; font-size: 24px; color: var(--muted); transform: rotate(-3deg)">they never talk to each other directly. everything goes through me.</span>
+
+<div class="slip" role="status" aria-live="polite" style="left: {{note.x}}%; top: {{note.y}}%; transform: translate(-50%, -50%) rotate({{note.rot}}deg)">
+<div class="mono" style="font-size: 11px; color: var(--muted); margin-bottom: 6px">{{note.route}}</div>
+<div class="mono {{note.strikeCls}}" style="font-size: 14px; line-height: 1.45">{{note.text}}</div>
+<sc-if value="{{note.edited}}" hint-placeholder-val="{{ false }}"><div class="note pop-in" style="font-size: 26px; color: #D3521F; margin-top: 4px">{{note.fix}}</div></sc-if>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 20px; margin-top: 28px">
+<button class="pill" onClick="{{passNote}}">{{passLabel}}</button>
+<span class="mono" style="font-size: 13px; color: var(--muted)">note {{noteNo}} of 4</span>
+</div>
+</section>
+
+<section id="life" style="max-width: 1180px; margin: 0 auto; padding: 96px 32px 88px">
+<h2 class="h2" style="margin-bottom: 32px">My life, as a git log<svg class="squiggle" width="200" height="14" viewBox="0 0 200 14" aria-hidden="true"><path d="M3 9c34-6 66-6 98-2s66 2 96-4" fill="none" style="stroke: var(--accent)" stroke-width="4" stroke-linecap="round"></path></svg></h2>
+<div style="border: 2px solid var(--ink); border-radius: 14px; background: var(--card); box-shadow: 5px 5px 0 var(--ink); overflow: hidden; transition: background-color .5s">
+<div style="padding: 14px 20px; border-bottom: 2px solid var(--ink); background: var(--sunk); transition: background-color .5s">
+<code class="mono" style="font-size: 15px; color: var(--ink)"><span style="color: #E8622C">$</span> git log --graph --all</code>
+</div>
+<ol style="list-style: none; margin: 0; padding: 8px 0">
+<sc-for list="{{commits}}" as="c" hint-placeholder-count="8">
+<li>
+<button class="commit" onClick="{{c.toggle}}" aria-expanded="{{c.expStr}}">
+<svg width="72" height="56" viewBox="0 0 72 56" aria-hidden="true" style="flex-shrink: 0">
+<path d="{{c.life}}" fill="none" stroke="#E8622C" stroke-width="3" stroke-linecap="round"></path>
+<path d="{{c.code}}" fill="none" style="stroke: var(--accent)" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="{{c.nx}}" cy="28" r="{{c.r}}" style="fill: {{c.tint}}" transform="translate(3 3)"></circle>
+<circle cx="{{c.nx}}" cy="28" r="{{c.r}}" fill="#FFFDF8" stroke="#1E1D2B" stroke-width="2.5"></circle>
+</svg>
+<span style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; min-width: 0; flex: 1">
+<span class="mono" style="font-size: 13px; color: var(--muted)">{{c.hash}}</span>
+<sc-if value="{{c.hasRef}}" hint-placeholder-val="{{ false }}"><span class="mono" style="{{c.refStyle}}">{{c.ref}}</span></sc-if>
+<span style="font-size: 17px; font-weight: 500">{{c.msg}}</span>
+</span>
+<span class="mono" style="font-size: 13px; color: var(--muted); white-space: nowrap; padding-left: 12px">{{c.date}}</span>
+</button>
+<sc-if value="{{c.exp}}" hint-placeholder-val="{{ false }}">
+<div class="logline" style="position: relative; padding: 2px 24px 16px 96px; background: var(--sunk)">
+<sc-if value="{{c.lifeThrough}}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position: absolute; left: 30.5px; top: 0; bottom: 0; width: 3px; background: #E8622C"></span></sc-if>
+<sc-if value="{{c.codeThrough}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; left: 62.5px; top: 0; bottom: 0; width: 3px; background: var(--accent)"></span></sc-if>
+<div style="border-left: 2px dashed var(--line); padding: 4px 0 4px 16px; font-size: 16px; color: var(--muted)">{{c.body}}<sc-if value="{{c.hasLink}}" hint-placeholder-val="{{ false }}"> <a href="{{c.href}}" class="mono" style="font-size: 13px">{{c.linkLabel}} →</a></sc-if></div>
+</div>
+</sc-if>
+</li>
+</sc-for>
+</ol>
+<div class="mono" style="display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 12px 20px; border-top: 2px solid var(--ink); font-size: 12px; color: var(--muted)">
+<span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 18px; height: 3px; background: #E8622C"></span>main: life</span>
+<span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 18px; height: 3px; background: var(--accent)"></span>open-source: code</span>
+</div>
+</div>
+</section>
+
+<section id="writing" style="max-width: 1180px; margin: 0 auto; padding: 24px 32px 104px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+<h2 class="h2">Things I've written<svg class="squiggle" width="200" height="14" viewBox="0 0 200 14" aria-hidden="true"><path d="M3 9c34-6 66-6 98-2s66 2 96-4" fill="none" style="stroke: var(--accent)" stroke-width="4" stroke-linecap="round"></path></svg></h2>
+<a href="https://www.bhnmzm.com/blog" style="font-weight: 600; display: inline-flex; align-items: center; min-height: 44px">All writing →</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px">
+<a href="https://www.bhnmzm.com/blog/mastering-git-interactive-rebase" class="card" style="margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 12px; color: var(--muted)">2023 · git</span>
+<span style="font: 700 22px/1.25 'Bricolage Grotesque', sans-serif">Mastering git interactive rebase</span>
+<span style="font-size: 16px; color: var(--muted)">Edit, squash, reorder and delete commits in the past, plus a way back with reflog.</span>
+</a>
+<a href="https://www.bhnmzm.com/blog/some-newborn-opensource-repositories" class="card" style="margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 12px; color: var(--muted)">2022 · open source</span>
+<span style="font: 700 22px/1.25 'Bricolage Grotesque', sans-serif">Some newborn open source repositories</span>
+<span style="font-size: 16px; color: var(--muted)">Seven tools I built for myself first and published later.</span>
+</a>
+<a href="https://www.bhnmzm.com/blog/curly-html-elements" class="card" style="margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<span class="mono" style="font-size: 12px; color: var(--muted)">2020 · css</span>
+<span style="font: 700 22px/1.25 'Bricolage Grotesque', sans-serif">Arranging HTML items in particular shapes</span>
+<span style="font-size: 16px; color: var(--muted)">How ellipsis-html lines elements up along an ellipse.</span>
+</a>
+</div>
+</section>
+
+<footer style="border-top: 2px solid var(--ink)">
+<div style="max-width: 1180px; margin: 0 auto; padding: 48px 32px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="display: flex; align-items: center; gap: 10px; font: 700 20px 'Bricolage Grotesque', sans-serif"><span aria-hidden="true" style="width: 14px; height: 14px; background: #E8622C; border-radius: 4px; box-shadow: 2px 2px 0 var(--ink)"></span>bhnmzm</span>
+<span class="note" style="font-size: 24px; color: var(--muted)">Wishing you well :)</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 15px">
+<span style="font-weight: 700; margin-bottom: 6px">This site</span>
+<a href="#about">About</a><a href="#work">Work</a><a href="#proxy">Proxy-dev</a><a href="#life">Life</a><a href="#writing">Writing</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 15px">
+<span style="font-weight: 700; margin-bottom: 6px">Elsewhere</span>
+<a href="mailto:bhnmzm@gmail.com">bhnmzm@gmail.com</a><a href="https://github.com/behnamazimi">GitHub</a><a href="https://x.com/bhnmzm">X</a><a href="https://www.linkedin.com/in/bhnmzm/">LinkedIn</a><a href="https://stackoverflow.com/users/3534952/behnam-azimi">Stack Overflow</a><a href="https://gitlab.com/behnamazimi/">GitLab</a>
+</div>
+</div>
+<div class="mono" style="max-width: 1180px; margin: 0 auto; padding: 16px 32px 32px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted)">© 2026 Behnam Azimi · since 2021</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter: 'all',
+      pos: { clar: { x: -36, y: 50 }, key: { x: 440, y: 24 }, miya: { x: 390, y: 372 } },
+      open: { clar: false, key: false, miya: false },
+      lifted: null,
+      openRow: 0,
+      lines: [{ t: '// press run, or type help', c: 'dim' }],
+      runs: 0, garbage: false, catWalking: false, catDone: false,
+      draft: { theme: 'day', cat: false },
+      cfg: { theme: 'day', cat: false },
+      input: '',
+      hop: 0, sending: false, task: '',
+      shelf: 0, ver: 8,
+      lsOpen: 0, px: 0, phase: 1, busy: false,
+      plog: [{ t: 'waiting for a task…', c: 'muted' }]
+    };
+    this.drag = null;
+    this.timers = [];
+    this.commands = ['help', 'behnam.play()', 'behnam.cat()', 'behnam.code()', "site.theme = 'night'", "site.theme = 'day'", 'site.cat = true', 'site.cat = false', 'clear'];
+  }
+  componentWillUnmount() { this.timers.forEach(clearTimeout); }
+  later(ms, fn) { this.timers.push(setTimeout(fn, ms)); }
+  print(items) { this.setState((st) => ({ lines: st.lines.concat(items).slice(-50) })); }
+
+  run() {
+    const runs = this.state.runs + 1;
+    const cfg = { ...this.state.draft };
+    this.setState({ runs, cfg });
+    this.print([{ t: '$ npm run about', c: 'cmd' }]);
+    if (this.state.garbage) {
+      this.print([{ t: "about.ts(6,3): error TS1005: ',' expected.", c: 'err' }, { t: '  hint: undo Miya first.', c: 'warn' }]);
+      return;
+    }
+    if (runs === 2 && !this.state.catDone) {
+      this.setState({ catWalking: true, catDone: true });
+      this.later(1300, () => this.setState({ garbage: true }));
+      this.later(2800, () => {
+        this.setState({ catWalking: false });
+        this.print([{ t: "about.ts(6,3): error TS1005: ',' expected.", c: 'err' }, { t: '    fffjjjjjjj;;;;;;;;', c: 'err' }, { t: '  hint: Miya walked across the keyboard again.', c: 'warn' }]);
+      });
+      return;
+    }
+    this.print([
+      { t: '✓ compiled about.ts', c: 'ok' },
+      { t: "behnam  { role: 'software engineer', city: 'Amsterdam', cat: 'Miya' }", c: 'info' },
+      { t: "site    { theme: '" + cfg.theme + "', cat: " + cfg.cat + ' }', c: 'acc' }
+    ]);
+  }
+  checkout() {
+    this.setState({ garbage: false });
+    this.print([{ t: '$ git checkout -- about.ts', c: 'cmd' }, { t: 'Updated 1 path from the index. Run it again.', c: 'ok' }]);
+  }
+  play() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      const ctx = this.ac || (this.ac = new AC());
+      if (ctx.state === 'suspended') ctx.resume();
+      const notes = [[392, .32], [440, .32], [494, .32], [587, .64], [523, .32], [494, .32], [392, .9]];
+      let t = ctx.currentTime + .05;
+      notes.forEach(([f, d]) => {
+        const o = ctx.createOscillator(); o.type = 'square'; o.frequency.value = f;
+        const lfo = ctx.createOscillator(); lfo.frequency.value = 5.2;
+        const lg = ctx.createGain(); lg.gain.value = 2.5; lfo.connect(lg); lg.connect(o.frequency);
+        const flt = ctx.createBiquadFilter(); flt.type = 'lowpass'; flt.frequency.value = 1500; flt.Q.value = .8;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.09, t + .06);
+        g.gain.setValueAtTime(.09, t + d - .08); g.gain.linearRampToValueAtTime(0, t + d);
+        o.connect(flt); flt.connect(g); g.connect(ctx.destination);
+        o.start(t); o.stop(t + d + .02); lfo.start(t); lfo.stop(t + d + .02);
+        t += d;
+      });
+    } catch (e) {}
+  }
+  setSite(key, raw) {
+    const v = raw.trim().replace(/^['"]|['"]$/g, '');
+    const allowed = { theme: ['day', 'night'], cat: ['true', 'false'] }[key];
+    if (!allowed.includes(v)) {
+      this.print([{ t: "error TS2322: Type '" + v + "' is not assignable to type '" + allowed.join("' | '") + "'.", c: 'err' }]);
+      return;
+    }
+    const val = key === 'cat' ? v === 'true' : v;
+    this.setState({ draft: { ...this.state.draft, [key]: val }, cfg: { ...this.state.cfg, [key]: val } });
+    this.print([{ t: '✓ site.' + key + ' = ' + (key === 'cat' ? v : "'" + v + "'"), c: 'ok' }]);
+  }
+  exec(raw) {
+    const cmd = raw.trim();
+    this.setState({ input: '' });
+    if (!cmd) return;
+    this.print([{ t: '› ' + cmd, c: 'cmd' }]);
+    const set = cmd.match(/^site\.(theme|cat)\s*=\s*(.+)$/);
+    if (cmd === 'help') {
+      this.print([
+        { t: '  behnam.play()     a short phrase on the clarinet', c: 'dim' },
+        { t: '  behnam.cat()      say hi to Miya', c: 'dim' },
+        { t: '  behnam.code()     what I write these days', c: 'dim' },
+        { t: "  site.theme = 'night'   site.cat = true", c: 'dim' },
+        { t: '  clear', c: 'dim' }
+      ]);
+    } else if (cmd === 'clear') {
+      this.setState({ lines: [] });
+    } else if (cmd === 'behnam.play()') {
+      this.play();
+      this.print([{ t: '♪ a short phrase on the clarinet (a synth stand-in, for now)', c: 'warn' }]);
+    } else if (cmd === 'behnam.cat()') {
+      this.print([{ t: "  Miya: 'mrrp.' She's coming over.", c: 'warn' }]);
+      this.setState({ catWalking: true });
+      this.later(2800, () => this.setState({ catWalking: false }));
+    } else if (cmd === 'behnam.code()') {
+      this.print([{ t: '  Mostly JavaScript and TypeScript, plus simple scripts in Go and Python.', c: 'info' }]);
+    } else if (set) {
+      this.setSite(set[1], set[2]);
+    } else {
+      this.print([{ t: "TypeError: '" + cmd + "' is not a command. Try help.", c: 'err' }]);
+    }
+  }
+  send(task) {
+    if (this.state.sending) return;
+    this.setState({ sending: true, plog: [], task });
+    const add = (t, c) => this.setState((st) => ({ plog: st.plog.concat([{ t, c }]) }));
+    const steps = [
+      [0, 1, '→ new task: "' + task + '"', 'info'],
+      [800, 2, 'behnam ▸ hands it to three agents', 'acc'],
+      [1500, 3, 'writer ✓   reviewer ✓   tester ✓', 'ok'],
+      [2500, 4, 'behnam ▸ reads every line.', 'acc'],
+      [3300, 5, '✓ shipped. (behnam still takes the blame)', 'ok']
+    ];
+    steps.forEach(([ms, hop, t, c]) => this.later(ms, () => { this.setState({ hop }); add(t, c); }));
+    this.later(4200, () => this.setState({ sending: false }));
+    this.later(6500, () => { if (!this.state.sending) this.setState({ hop: 0 }); });
+  }
+  tap(id) {
+    if (id === 'miya') {
+      this.setState({ open: { ...this.state.open, miya: !this.state.open.miya } });
+      return;
+    }
+    this.setState({ open: { ...this.state.open, [id]: true } });
+    this.later(2600, () => this.setState({ open: { ...this.state.open, [id]: false } }));
+    if (id === 'clar') this.play();
+  }
+  object(id) {
+    const p = this.state.pos[id];
+    const open = this.state.open[id];
+    return {
+      x: Math.round(p.x), y: Math.round(p.y),
+      cls: this.state.lifted === id ? 'lifted' : '',
+      open,
+      capY: open ? 34 : 28, textY: open ? 70 : 64,
+      down: (e) => {
+        e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId);
+        this.drag = { id, sx: e.clientX, sy: e.clientY, ox: p.x, oy: p.y, moved: false };
+        this.setState({ lifted: id });
+      },
+      move: (e) => {
+        const d = this.drag;
+        if (!d || d.id !== id) return;
+        const dx = e.clientX - d.sx, dy = e.clientY - d.sy;
+        if (Math.abs(dx) + Math.abs(dy) > 5) d.moved = true;
+        if (d.moved) this.setState({ pos: { ...this.state.pos, [id]: { x: d.ox + dx, y: d.oy + dy } } });
+      },
+      up: () => {
+        const d = this.drag;
+        this.drag = null;
+        this.setState({ lifted: null });
+        if (d && d.id === id && !d.moved) this.tap(id);
+      },
+      key: (e) => { if (e.detail === 0) this.tap(id); }
+    };
+  }
+  commits() {
+    const rows = [
+      { lane: 'code', hash: 'f00d5e5', ref: 'HEAD -> main', date: '2026-11', msg: 'redesign: bhnmzm.com v10', body: 'The page you are on. Built in the open, one version at a time.', head: true },
+      { lane: 'life', hash: 'a2f9c31', ref: 'tag: amsterdam', date: '2022-04', msg: 'move: Istanbul → Amsterdam', body: 'Moved to Amsterdam, the Netherlands.' },
+      { lane: 'code', hash: 'c0ffee1', date: '2021-04', msg: 'init: bhnmzm.com', body: 'First commit of this website. Next.js, an orange square and a hamburger menu.' },
+      { lane: 'code', hash: '0b5e4c2', ref: 'branch: open-source', date: '2020-02', msg: 'checkout -b open-source', body: 'Started publishing my side projects in the open.', href: '#work', label: 'see them on the shelf', fork: true },
+      { lane: 'life', hash: '8f2c6d1', ref: 'tag: istanbul', date: '2019-08', msg: 'move: → Istanbul', body: 'Moved to Istanbul, Turkey.' },
+      { lane: 'life', hash: '1e4a9b7', date: '2018-08', msg: 'merge: Hani into life', body: 'Married Hani.', big: true },
+      { lane: 'life', hash: '6d3f0e8', date: '2015', msg: 'release: B.Sc. software engineering', body: 'Graduated with a bachelor’s degree in software engineering.' },
+      { lane: 'life', hash: '0000001', ref: 'root', date: 'age 11', msg: 'initial commit', body: 'Wrote my first lines of code. Never really stopped.' }
+    ];
+    const forkAt = rows.findIndex((r) => r.fork);
+    const last = rows.length - 1;
+    const openRow = this.state.openRow;
+    return rows.map((r, i) => {
+      const life = i === 0 ? 'M20 28V56' : i === last ? 'M20 0V28' : 'M20 0V56';
+      let code = '';
+      if (i === 0) code = 'M52 28V56';
+      else if (i < forkAt) code = 'M52 0V56';
+      else if (i === forkAt) code = 'M52 0V28C52 46 20 38 20 56';
+      const exp = openRow === i;
+      const tint = r.head ? '#F2C14E' : r.lane === 'life' ? '#F9C6AE' : '#C9BDF7';
+      return {
+        hash: r.hash, date: r.date, msg: r.msg, body: r.body,
+        hasRef: !!r.ref, ref: r.ref || '',
+        refStyle: 'font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--on-tint); background: ' + tint + ';',
+        life, code,
+        nx: r.lane === 'life' ? 20 : 52,
+        r: r.big || r.head ? 10 : 8,
+        tint,
+        exp, expStr: exp ? 'true' : 'false',
+        lifeThrough: i !== last,
+        codeThrough: i < forkAt,
+        hasLink: !!r.href, href: r.href || '#', linkLabel: r.label || '',
+        toggle: () => this.setState({ openRow: exp ? -1 : i })
+      };
+    });
+  }
+  shelfData() {
+    return [
+      { no: 'No. 08', name: 'Playmime', years: '2025 — now', status: 'still running', desc: 'Charades with no pen, no paper and no hundred apps. Open it, get a word, act it out.', href: 'https://playmime.com', label: 'playmime.com' },
+      { no: 'No. 07', name: 'SureYouDo', years: '2024 — now', status: 'still running', desc: 'A trustless app where you lock in a pledge on your goal, and lose it if you give up.', href: 'https://sureyoudo.io', label: 'sureyoudo.io' },
+      { no: 'No. 06', name: 'Merriam-Webster extension', years: '2022 — now', status: '20K+ users', desc: 'An open-source Merriam-Webster dictionary extension for Chromium browsers.', href: 'https://github.com/behnamazimi/merriam-webster-dictionary-extension', label: 'github' },
+      { no: 'No. 04', name: 'In-site shortkeys', years: '2020 — now', status: 'still running', desc: 'Define your own keyboard shortcuts for things you do often on websites.', href: 'https://chrome.google.com/webstore/detail/in-site-shortkeys/dgigbgdgmhhncfgaidcbmafkcmagkool', label: 'chrome web store' },
+      { no: 'No. 03', name: 'ellipsis-html', years: '2020 — now', status: 'still running', desc: 'Line HTML elements up along an ellipse, or part of one, without canvas or heavy math.', href: 'https://github.com/behnamazimi/practical-front-end-projects', label: 'github' },
+      { no: 'No. 05', name: 'tw-followingtrackbot', years: '2021 — now', status: 'still running', desc: 'A bot that tells you when an account starts following other accounts.', href: 'https://www.npmjs.com/package/tw-followingtrackbot', label: 'npm' },
+      { no: 'No. 02', name: 'js-service-wrapper', years: '2020', status: 'retired, with honors', desc: 'A promise-based service wrapper with a queue, for the browser and Node.js.', href: 'https://github.com/behnamazimi/js-service-wrapper', label: 'github' },
+      { no: 'No. 01', name: 'Practical front-end projects', years: '2020 — now', status: 'still running', desc: 'Small projects in plain JavaScript, CSS and HTML. Free to learn from, always.', href: 'https://github.com/behnamazimi/practical-front-end-projects', label: 'github' }
+    ];
+  }
+  versionsData() {
+    return [
+      { agent: 'A living dictionary entry: breathing type, a spinning ring, floating cards.', me: 'This looks like a commercial website, not a personal one.' },
+      { agent: 'Text first. Page and source views, margin notes, a changelog.', me: "I don't like this one either." },
+      { agent: 'Warm and hand-made: your photo, color, paper planes.', me: "We don't need the get-in-touch form. At all." },
+      { agent: 'Desk objects you can drag and click, in one print style.', me: "It's better, but we're still not there." },
+      { agent: 'Your life as a git log.', me: 'Getting closer.' },
+      { agent: 'An about.ts you can run: a proxy trace, Miya, a clarinet, a REPL.', me: 'I see some overkill and inconsistencies.' },
+      { agent: 'Cleaned up: one accent, one card style, a real night theme.', me: "I'd like a better illustration of Miya, my cat." },
+      { agent: 'A task, three robot agents, a shipped box.', me: 'Does this look authentic and unique to you?' },
+      { agent: 'The history of this page, drawn right on it.', me: 'pending…' }
+    ];
+  }
+  lsData() {
+    return [
+      { name: 'playmime', title: 'Playmime', type: 'web', users: '—', since: '2025-01', desc: 'Charades with no pen, no paper and no hundred apps. Open it, get a word, act it out.', site: 'https://playmime.com', siteLabel: 'playmime.com', code: 'https://github.com/behnamazimi/playmime.com' },
+      { name: 'sureyoudo', title: 'SureYouDo', type: 'web', users: '—', since: '2024-03', desc: 'A trustless app where you lock in a pledge on your goal, and lose it if you give up.', site: 'https://sureyoudo.io', siteLabel: 'sureyoudo.io', code: 'https://github.com/sureyoudo-io' },
+      { name: 'merriam-webster-extension', title: 'Merriam-Webster extension', type: 'ext', users: '20K+', since: '2022-05', desc: 'An open-source Merriam-Webster dictionary extension for Chromium browsers.', site: 'https://chrome.google.com/webstore/detail/merriam-webster-dictionar/gmhgdiamihghcepkeapfoeakphffcdkk', siteLabel: 'chrome web store', code: 'https://github.com/behnamazimi/merriam-webster-dictionary-extension' },
+      { name: 'tw-followingtrackbot', title: 'tw-followingtrackbot', type: 'npm', users: '—', since: '2021-08', desc: 'A bot that tells you when an account starts following other accounts.', site: 'https://www.npmjs.com/package/tw-followingtrackbot', siteLabel: 'npm', code: 'https://github.com/behnamazimi/tw-followingtrackbot' },
+      { name: 'in-site-shortkeys', title: 'In-site shortkeys', type: 'ext', users: '—', since: '2020-10', desc: 'Define your own keyboard shortcuts for things you do often on websites.', site: 'https://chrome.google.com/webstore/detail/in-site-shortkeys/dgigbgdgmhhncfgaidcbmafkcmagkool', siteLabel: 'chrome web store', code: 'https://github.com/behnamazimi/in-site-shorteys' },
+      { name: 'ellipsis-html', title: 'ellipsis-html', type: 'lib', users: '—', since: '2020-08', desc: 'Line HTML elements up along an ellipse, or part of one, without canvas or heavy math.', code: 'https://github.com/behnamazimi/practical-front-end-projects' },
+      { name: 'js-service-wrapper', title: 'js-service-wrapper', type: 'lib', users: '—', since: '2020-07', note: '# archived', perm: 'dr-xr-xr-x', desc: 'A promise-based service wrapper with a queue, for the browser and Node.js. Retired, with honors.', code: 'https://github.com/behnamazimi/js-service-wrapper' },
+      { name: 'practical-front-end-projects', title: 'Practical front-end projects', type: 'lib', users: '—', since: '2020-02', desc: 'Small projects in plain JavaScript, CSS and HTML. Free to learn from, always.', code: 'https://github.com/behnamazimi/practical-front-end-projects' }
+    ].map((r, i) => {
+      const exp = this.state.lsOpen === i;
+      return { ...r, perm: r.perm || 'drwxr-xr-x', note: r.note || '', exp, expStr: exp ? 'true' : 'false', hasSite: !!r.site, hasCode: !!r.code, site: r.site || '#', siteLabel: r.siteLabel || '', code: r.code || '#', toggle: () => this.setState({ lsOpen: exp ? -1 : i }) };
+    });
+  }
+  exchanges() {
+    return [
+      { from: 'planner', to: 'coder', text: 'Rewrite the whole app in Rust.', fix: 'Fix the one bug.' },
+      { from: 'coder', to: 'reviewer', text: 'Done. Touched 2,400 lines.', fix: 'Now split it into 3 PRs.' },
+      { from: 'reviewer', to: 'coder', text: 'LGTM.', fix: 'Read it first.' },
+      { from: 'coder', to: 'planner', text: 'Should we add a blockchain?', fix: 'No.' }
+    ];
+  }
+  passNote() {
+    if (this.state.busy) return;
+    const travel = () => {
+      this.setState({ busy: true, phase: 2 });
+      this.later(1000, () => this.setState({ phase: 3 }));
+      this.later(2300, () => this.setState({ phase: 4 }));
+      this.later(3300, () => this.setState({ busy: false }));
+    };
+    if (this.state.phase === 4) {
+      this.setState({ px: (this.state.px + 1) % 4, phase: 1, busy: true });
+      this.later(700, travel);
+    } else {
+      travel();
+    }
+  }
+  renderVals() {
+    const { filter, hop, draft, cfg, input } = this.state;
+    const spots = { planner: [16, 20], coder: [84, 20], reviewer: [84, 82] };
+    const ex = this.exchanges()[this.state.px];
+    const ph = this.state.phase;
+    const lerp = (a, t) => [a[0] + (50 - a[0]) * t, a[1] + (52 - a[1]) * t];
+    let pos = ph === 1 ? lerp(spots[ex.from], 0.38) : ph === 4 ? lerp(spots[ex.to], 0.38) : [50, 20];
+    const ag = {};
+    Object.keys(spots).forEach((k) => {
+      let status = 'idle';
+      if (k === ex.from && ph <= 1) status = 'writing a note…';
+      else if (k === ex.from) status = 'sent ✓';
+      if (k === ex.to) status = ph === 4 ? 'got it ✓' : 'waiting…';
+      ag[k] = { x: spots[k][0], y: spots[k][1], status, cls: (k === ex.from && ph === 1) || (k === ex.to && ph === 4) ? 'active' : '' };
+    });
+    const shelfCls = {}, shelfOn = {}, pickShelf = {};
+    for (let i = 0; i < 8; i++) {
+      shelfCls['p' + i] = this.state.shelf === i ? 'on' : '';
+      shelfOn['p' + i] = this.state.shelf === i ? 'true' : 'false';
+      pickShelf['p' + i] = () => this.setState({ shelf: i });
+    }
+    const verCls = {}, verOn = {}, pickVer = {};
+    for (let i = 0; i < 9; i++) {
+      const k = 'v' + (i + 1);
+      verCls[k] = this.state.ver === i ? 'on' : '';
+      verOn[k] = this.state.ver === i ? 'true' : 'false';
+      pickVer[k] = () => this.setState({ ver: i });
+    }
+    const term = { cmd: '#E8E6F2', dim: '#8E8BA8', info: '#7FB8F0', acc: '#B9A6FF', ok: '#8FD1A6', err: '#F28C6B', warn: '#F2C14E' };
+    const plogColors = { info: 'var(--ink)', acc: 'var(--accent)', ok: 'var(--ink)', muted: 'var(--muted)' };
+    const e1 = hop === 1, e2 = hop === 2 || hop === 4, e3 = hop === 5;
+    const notes = { 'write my bio': ['write', 'my bio'], 'fix a flaky test': ['fix a', 'flaky test'], 'review this PR': ['review', 'this PR'] };
+    const tl = notes[this.state.task] || ['your', 'task here'];
+    const pending = input ? this.commands.filter((c) => c.startsWith(input) && c !== input).slice(0, 3) : ['help', 'behnam.play()', 'site.cat = true'];
+    return {
+      rootCls: 'root' + (cfg.theme === 'night' ? ' night' : ''),
+      cfg,
+      draft: { ...draft, catStr: String(draft.cat) },
+      dirtyMark: JSON.stringify(draft) !== JSON.stringify(cfg) ? '● unsaved' : '',
+      cycleTheme: () => this.setState({ draft: { ...this.state.draft, theme: this.state.draft.theme === 'day' ? 'night' : 'day' } }),
+      toggleCatCfg: () => this.setState({ draft: { ...this.state.draft, cat: !this.state.draft.cat } }),
+      run: () => this.run(),
+      checkout: () => this.checkout(),
+      garbage: this.state.garbage,
+      catWalking: this.state.catWalking,
+      lines: this.state.lines.map((l) => ({ t: l.t, style: 'color: ' + (term[l.c] || term.cmd) + ';' })),
+      input,
+      onInput: (e) => this.setState({ input: e.target.value }),
+      onKey: (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); this.exec(this.state.input); }
+        else if (e.key === 'Tab' && this.state.input) {
+          const m = this.commands.find((c) => c.startsWith(this.state.input) && c !== this.state.input);
+          if (m) { e.preventDefault(); this.setState({ input: m }); }
+        }
+      },
+      sugg: pending.map((c) => ({ cmd: c, pick: () => this.exec(c) })),
+      d: {
+        e1s: e1 ? '#E8622C' : 'var(--line)', e1c: e1 ? 'flow' : '',
+        e3s: e3 ? '#E8622C' : 'var(--line)', e3c: e3 ? 'flow' : '',
+        t1: tl[0], t2: tl[1],
+        boxCls: hop === 5 ? 'done' : '',
+        e2s: e2 ? 'var(--accent)' : 'var(--line)', e2c: e2 ? (hop === 4 ? 'flow rev' : 'flow') : '',
+        bc: hop === 2 || hop === 4 ? 'pulse' : '',
+        ac: hop === 3 ? 'pulse' : ''
+      },
+      plog: this.state.plog.map((l) => ({ t: l.t, style: 'color: ' + (plogColors[l.c] || 'var(--ink)') + ';' })),
+      tasks: ['write my bio', 'fix a flaky test', 'review this PR'].map((label) => ({ label, send: () => this.send(label) })),
+      miyaHeroCls: 'miya-sit' + (this.state.open.miya ? ' awake' : ''),
+      o: { clar: this.object('clar'), key: this.object('key'), miya: this.object('miya') },
+      filters: [['all', 'All'], ['apps', 'Apps'], ['ext', 'Extensions'], ['lib', 'Libraries']].map(([id, label]) => ({ label, on: filter === id ? 'true' : 'false', pick: () => this.setState({ filter: id }) })),
+      showApps: filter === 'all' || filter === 'apps',
+      showExt: filter === 'all' || filter === 'ext',
+      showLib: filter === 'all' || filter === 'lib',
+      commits: this.commits(),
+      ls: this.lsData(),
+      ag,
+      note: { x: pos[0].toFixed(1), y: pos[1].toFixed(1), rot: ph === 1 ? -4 : ph === 4 ? 3 : -1, route: ex.from + ' → behnam → ' + ex.to, text: ex.text, fix: ex.fix, edited: ph >= 3, strikeCls: ph >= 3 ? 'strike' : '' },
+      penCls: ph === 3 && this.state.busy ? 'writing' : '',
+      passNote: () => this.passNote(),
+      passLabel: this.state.busy ? 'passing it along…' : ph === 4 ? 'pass the next note →' : 'pass the note →',
+      noteNo: this.state.px + 1,
+      shelfCls, shelfOn, pickShelf, item: this.shelfData()[this.state.shelf],
+      verCls, verOn, pickVer, ex: this.versionsData()[this.state.ver]
+    };
+  }
+}
+</script>
+</body>
+</html>

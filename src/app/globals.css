@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant night (&:where([data-theme=night], [data-theme=night] *));
+
+:root {
+  --ink: #1E1D2B;
+  --paper: #FBF8F1;
+  --card: #FFFDF8;
+  --sunk: #F3EEE3;
+  --muted: #57556A;
+  --line: #D9D4C7;
+  --accent: #6C4CE0;
+  --code: #1E1D2B;
+  --code-line: #34324A;
+}
+
+[data-theme=night] {
+  --ink: #ECE9F5;
+  --paper: #14131C;
+  --card: #1C1B27;
+  --sunk: #191823;
+  --muted: #A9A6BF;
+  --line: #3A3850;
+  --accent: #B9A6FF;
+  --code: #0E0D15;
+  --code-line: #2A2840;
+}
+
+@theme {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-sunk: var(--sunk);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-code: var(--code);
+  --color-code-line: var(--code-line);
+
+  /* fixed tints: identical in both themes, used in illustrations and small accents */
+  --color-peach: #F9C6AE;
+  --color-lavender: #C9BDF7;
+  --color-lavender-soft: #E9E4FB;
+  --color-sky: #A9D3F5;
+  --color-yellow: #F2C14E;
+  --color-orange: #E8622C;
+  --color-red-pen: #D3521F;
+  --color-pink: #ED93B1;
+  --color-eye-green: #9BC46A;
+  /* outline for details drawn on the tints above, so faces stay readable in both themes */
+  --color-ink-fixed: #1E1D2B;
+
+  /* code and terminal colors, always on a dark surface */
+  --color-term: #E8E6F2;
+  --color-term-keyword: #B9A6FF;
+  --color-term-string: #8FD1A6;
+  --color-term-info: #7FB8F0;
+  --color-term-comment: #8E8BA8;
+  --color-term-error: #F28C6B;
+  --color-term-warn: #F2C14E;
+  --color-term-token: #2A2840;
+  --color-term-edge: #4A4766;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-hand: var(--font-caveat), cursive;
+
+  --animate-morph: morph 14s ease-in-out infinite;
+  --animate-legs: legs .28s ease-in-out infinite alternate;
+  --animate-across: across 2.8s linear both;
+  --animate-stroll: stroll 20s linear infinite;
+  --animate-flow: flow .6s linear infinite;
+  --animate-pulse-soft: pulse .8s ease-in-out infinite;
+  --animate-pop: pop .45s cubic-bezier(.2, 1.6, .4, 1) both;
+  --animate-floatup: floatup 2.4s ease-out both;
+  --animate-scribble: scribble .22s ease-in-out infinite alternate;
+  --animate-fade: fade .35s ease both;
+
+  @keyframes morph {
+    0%, 100% { border-radius: 58% 42% 55% 45% / 50% 55% 45% 50%; }
+    33% { border-radius: 45% 55% 40% 60% / 58% 42% 58% 42%; }
+    66% { border-radius: 52% 48% 62% 38% / 44% 60% 40% 56%; }
+  }
+  @keyframes legs {
+    from { transform: rotate(16deg); }
+    to { transform: rotate(-16deg); }
+  }
+  @keyframes across {
+    from { transform: translateX(-150px); }
+    to { transform: translateX(640px); }
+  }
+  @keyframes stroll {
+    from { transform: translateX(-160px); }
+    to { transform: translateX(110vw); }
+  }
+  @keyframes flow {
+    to { stroke-dashoffset: -16; }
+  }
+  @keyframes pulse {
+    50% { opacity: .5; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: translateX(-50%) scale(.6); }
+    to { opacity: 1; transform: translateX(-50%) scale(1); }
+  }
+  @keyframes floatup {
+    from { opacity: 0; transform: translateY(0) rotate(0); }
+    15% { opacity: 1; }
+    to { opacity: 0; transform: translateY(-120px) rotate(-18deg); }
+  }
+  @keyframes scribble {
+    from { transform: rotate(-10deg) translateX(-4px); }
+    to { transform: rotate(6deg) translateX(4px); }
+  }
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

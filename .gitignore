@@ -100,3 +100,6 @@ typings/
 
 .vercel
 .env*.local
+
+# Next.js generated
+next-env.d.ts
